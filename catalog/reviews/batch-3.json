@@ -1,0 +1,1015 @@
+[
+ {
+  "id": 812,
+  "title": "Change all objects to render 'flat'",
+  "summary": "Macro that walks the scene graph and sets every polygon object's normalType to flat (for DXF imports).",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "SetShadingFlat.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/812/post-5144",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "just go through the scenegraph and set the normalType parameter of all polygon objects to 0."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/812/post-5169",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "I've written the script for your. Just copy it to the \"Scripts/Macro\" folder and restart Cheetah3D."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/812/post-5251",
+    "author": "ROI",
+    "polarity": "info",
+    "quote": "Martin, you're a star - thank you so much."
+   }
+  ],
+  "api_lessons": [
+   "Flat shading of a polygon object is the 'normalType' parameter: obj.setParameter(\"normalType\", 0) = flat (UI 'Smooth' property).",
+   "The default shading applied by the DXF importer cannot be changed via script (Martin).",
+   "New Macro scripts require a Cheetah3D restart before they appear under Tools > Scripts > Macro."
+  ],
+  "notes": "Written by Martin (the developer) on request; requester thanked but did not explicitly confirm running it."
+ },
+ {
+  "id": 996,
+  "title": "poly and spline script from Grapher.",
+  "summary": "tg_jp sample polygon/spline generator scripts reproducing Grapher.app parametric shapes.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/996/post-6218",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "please download newer version (...._20061020c.zip) for calculation bug. I fixed it already with Martin's help."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/996/post-6226",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "It´s fun. The only thing i would have mentioned, the results are of planetary size"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Download only at tres-graficos.jp (article id=14). First zip (_20061020) had a calculation bug; use _20061020c. Output is very large in scale."
+ },
+ {
+  "id": 1405,
+  "title": "Flatten Polygon",
+  "summary": "Macro that projects the vertices of selected polygon(s) onto a common plane.",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [
+   "5.8"
+  ],
+  "best_file": "flattened4U.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1405/post-41070",
+    "author": "frank beckmann",
+    "polarity": "fix",
+    "quote": "I tried to get this to run again and finally it works"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1405/post-86451",
+    "author": "Targos",
+    "polarity": "broken",
+    "quote": "error: Can't find variable: printVec3D  C3D Version 5.8"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1405/post-86452",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "So you haven´t try the modified script from my reply N°6 - which still works."
+   }
+  ],
+  "api_lessons": [
+   "printVec3D is not a built-in; scripts calling undefined helper functions fail with \"Can't find variable: <name>\" at runtime."
+  ],
+  "notes": "Original Flatten.js (olaf.ch, external, now dead) fails with printVec3D error (reported on 5.8); use Frank's 2010 flattened4U.js attachment. Multi-poly version: polygons sharing points can disturb each other; rerun the script if needed."
+ },
+ {
+  "id": 1422,
+  "title": "For scripters: Unlock Screen",
+  "summary": "Two-line Macro that releases a stuck redraw lock and redraws after a script error leaves the UI locked.",
+  "category": "utility-library",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post8967-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1422/post-8967",
+    "author": "capnchunky",
+    "polarity": "info",
+    "quote": "it would hit an error and leave the UI locked."
+   }
+  ],
+  "api_lessons": [
+   "If a script errors while the document redraw lock is held, the UI stays locked; recover with doc.releaseRedrawLock(); doc.redrawAll(); (e.g. from a Macro).",
+   "Always release the redraw lock on every exit path (consider try/finally) in scripts that lock redraw."
+  ],
+  "notes": "Full code is in the post; original zip link (muohio.edu) is dead."
+ },
+ {
+  "id": 1731,
+  "title": "Polygon Array.js",
+  "summary": "Polygonobj script that copies a polygon mesh onto the surface points/polygons of another object (e.g. forests on terrain).",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [
+   "4.6"
+  ],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1731/post-25993",
+    "author": "peer",
+    "polarity": "broken",
+    "quote": "it also has the uv wrong element array error in 4.6"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1731/post-25994",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I fixed that problem. please download the latest file again."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1731/post-11565",
+    "author": "squareitround",
+    "polarity": "works",
+    "quote": "Even more useful! Thanks again."
+   }
+  ],
+  "api_lessons": [
+   "Cheetah3D 4.6 changed UV handling: polygon-building scripts written earlier hit a 'uv wrong element array' error and needed UV code updates."
+  ],
+  "notes": "Download only at tres-graficos.jp (article id=28); updated 2010-01-19 for multi-child copy."
+ },
+ {
+  "id": 1801,
+  "title": "Grid objects",
+  "summary": "Tool script that creates a grid of boxes with scale, step gaps, border-only and grouping options.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post12227-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1801/post-12208",
+    "author": "frank beckmann",
+    "polarity": "broken",
+    "quote": "If I scale my box other than 1:1:1, maybe 1:3:0.5 I get one special box."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1801/post-12211",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "Thanks, works fine now."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1801/post-12226",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "Wow. Perfect. I like the new \"Border\" function."
+   }
+  ],
+  "api_lessons": [
+   "Children inherit the parent's transform: parenting boxes under the first box with addChildAtIndex() compounds scale/position, so set child scale to 1 or parent under a FOLDER object.",
+   "Tool UI pattern: addParameterInt/Float(name, default, min, max, animate, build) and addParameterButton(name, label, callbackFunctionName); read values via tool.getParameter(name).",
+   "Call obj.update() after setting parameters on newly added objects."
+  ],
+  "notes": "Final v1.04 (post 12227) handles grouping by scaling only the parent and stepping by 1.0; Frank confirmed the step/border version (post 12224)."
+ },
+ {
+  "id": 1802,
+  "title": "Odd problem",
+  "summary": "Q&A on why grouping boxes under the first box distorts scale/position in the Grid objects script.",
+  "category": "modeling",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1802/post-12219",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "the parent object's geometry (pos, scale, rotation) affects the child's geometry."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1802/post-12225",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "a simple solution about grouping problem is to add a folder for parent object of all box objects."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1802/post-12228",
+    "author": "MrTAToad",
+    "polarity": "fix",
+    "quote": "I found that setting the scale for just the parent to solve the problem."
+   }
+  ],
+  "api_lessons": [
+   "Child objects' scale/position are relative to the parent; to group generated objects without distortion use folder = doc.addObject(FOLDER); folder.addChildAtIndex(obj, folder.childCount()).",
+   "Box primitive size parameters are 'sizeX', 'sizeY', 'sizeZ' (UI: width, height, length) - use these instead of 'scale' to size boxes."
+  ],
+  "notes": ""
+ },
+ {
+  "id": 2574,
+  "title": "Edge Utilities",
+  "summary": "Tool script to explicitly set/unset edges and seams and copy seams to edges and vice versa.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Edge Utilities.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2574/post-17804",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "so handy script and nice code"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Author's first script (podperson); uses functions passed as parameters for extensibility."
+ },
+ {
+  "id": 3610,
+  "title": "Object.getParameter() couldn't find parameter",
+  "summary": "Q&A: how to test for a parameter's existence / material type before getParameter, with an object-info dump script.",
+  "category": "materials",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post25441-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3610/post-25438",
+    "author": "Vector",
+    "polarity": "info",
+    "quote": "Object.getParameter() couldn't find parameter called colorTex"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3610/post-25441",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "if you want to get a type of material, you can use 'shaderType' (String) paramter for it."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3610/post-25483",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "you can check it at 'Console' view, that is not showed by default."
+   }
+  ],
+  "api_lessons": [
+   "getParameter() on a name the object lacks throws a JS error ('couldn't find parameter called X'); enumerate obj.parameterInfo() (array of [name, type]) to discover/guard names.",
+   "Material type can be read from the material's 'shaderType' string parameter.",
+   "Tag type 102 is the material (shader) tag; doc.materialAtIndex(tag.linkedToMaterial()) gets its material.",
+   "print() output goes to the Console view, which is hidden by default; add it via right-click/Control-click on a view header."
+  ],
+  "notes": "Object Info dump script (post 25441) is a useful debugging tool."
+ },
+ {
+  "id": 4991,
+  "title": "Tiles Object Chunker",
+  "summary": "Tool script that splits a mesh into grid tiles (N x N) instead of by polygon count.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Tiled Object Chunker.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4991/post-35691",
+    "author": "Physt",
+    "polarity": "info",
+    "quote": "My modification takes a tile size instead of a poly limit."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Modified from the Object Chunker script; no feedback."
+ },
+ {
+  "id": 6297,
+  "title": "multi light.js script with C3D 5.5",
+  "summary": "Scale light intensity tool updated for 5.5 to multiply intensity of all lights recursively; multi light issue was user error.",
+  "category": "rendering",
+  "status": "reported-working",
+  "versions_working": [
+   "5.5"
+  ],
+  "versions_broken": [],
+  "best_file": "Scale light intensity V5.5.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6297/post-48143",
+    "author": "level-A",
+    "polarity": "works",
+    "quote": "yeah, that works. now parts of my work go a little faster"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6297/post-48153",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "please check the latest version of script and 'recursive' parameter is checked before applying."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6297/post-48193",
+    "author": "level-A",
+    "polarity": "works",
+    "quote": "I did not know about the recursive parameter. now it works like heaven"
+   }
+  ],
+  "api_lessons": [
+   "Light intensity is the 'intensity' parameter; the 5.5 version identifies light objects with obj.type()==5 while recursively iterating childAtIndex()."
+  ],
+  "notes": "Original multi light.js (tg_jp, thread 803) works in 5.5 when its 'recursive' option is checked."
+ },
+ {
+  "id": 6458,
+  "title": "3D Coat AppLink for Cheetah 3D",
+  "summary": "Tool script implementing a 3D-Coat AppLink (export to paint/UV/voxel rooms, OBJ re-import, material import via .c3dmat).",
+  "category": "import-export",
+  "status": "mixed",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "3D-Coat.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6458/post-50379",
+    "author": "xeen3d",
+    "polarity": "works",
+    "quote": "Your Script works very well at this time"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6458/post-92732",
+    "author": "meshpig1",
+    "polarity": "broken",
+    "quote": "as an alias it simply crashes Cheetah when selecting the script in the tool panel."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6458/post-126536",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "Success: The script works - though I don´t have 3d-Coat to test it thoroughly"
+   }
+  ],
+  "api_lessons": [
+   "(2010) The JS API had no call to delete objects or materials, so re-imports can only merge/add new objects.",
+   "(2010, node-based material system) assigning textures to materials via script was broken; workaround was generating/loading native .c3dmat material files.",
+   "OS.system() is used for filesystem work (mkdir, echo $HOME > file) and OS.runOpenPanel() for picking folders."
+  ],
+  "notes": "v1.1 install: unzip to scripts/3D-Coat and put an alias of 3D-Coat.js in scripts/Tool. 2014 crash report on Mavericks; 2023 Frank got it to launch (without 3D-Coat). Requires 3D-Coat 3.5.01+."
+ },
+ {
+  "id": 6600,
+  "title": "Importing SVG and converting points/lines to 3d objects",
+  "summary": "SVG Graph Loader tool script imports SVG network graphs, converting lines to tubes and nodes to disks.",
+  "category": "import-export",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "SVG Graph Loader-2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6600/post-52407",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "here is script's approach. please check it. it's a Tool script"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6600/post-105450",
+    "author": "Oval",
+    "polarity": "fix",
+    "quote": "But it has some minor bug in S(s) svg tag handling."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6600/post-105452",
+    "author": "Oval",
+    "polarity": "info",
+    "quote": "Caution: before \"Import\" button clicking take the focus off from the scale parameter."
+   }
+  ],
+  "api_lessons": [
+   "A Tool parameter text field being edited is not committed until it loses focus; clicking a button while it has focus uses the old value.",
+   "Spline building used SplineCore.curve(cp1, cp2, end) with Vec3D control points to append cubic Bezier segments."
+  ],
+  "notes": "Oval's 2017 version fixes smooth-curve (S/s) reflected control points."
+ },
+ {
+  "id": 6652,
+  "title": "Particlle Visualization of ASCII Data",
+  "summary": "Particle script (EQ Visualizer) placing particles from an ASCII earthquake data file (lat/long/depth/magnitude).",
+  "category": "particles",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "EQ Visualizer-2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6652/post-52962",
+    "author": "gordon_lister",
+    "polarity": "info",
+    "quote": "Thank you for your sample script. It helped me a lot."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6652/post-52962",
+    "author": "gordon_lister",
+    "polarity": "broken",
+    "quote": "this was not a very successful  modification - since I no longer see the input data."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6652/post-52984",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I attached the latest file, I modified some function and edit some paramters."
+   }
+  ],
+  "api_lessons": [
+   "Particle scripts install in ~/Library/Application Support/Cheetah3D/scripts/Particle."
+  ],
+  "notes": "Ships with a sample .jas scene; data file path and lat/long->XYZ conversion must be edited for your data."
+ },
+ {
+  "id": 7212,
+  "title": "Iterate Coord System actions on selection",
+  "summary": "Burn Transform+ tool script bakes transforms into vertices for many objects; Q&A on scripting pivots.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Burn Transform+.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7212/post-59090",
+    "author": "ByDesign Games",
+    "polarity": "works",
+    "quote": "Thanks for this; it's definitely useful."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7212/post-59091",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "you can manipulate pivot paramter with function Obj::setParameter for \"pivot\" paramter's name."
+   }
+  ],
+  "api_lessons": [
+   "Coord System actions (Burn Transform, Center/Burn Pivot) are not exposed as API calls; reimplement them manually.",
+   "Pivot is the 'pivot' Vec3D parameter: obj.setParameter(\"pivot\", new Vec3D(x,y,z)); you must compute the center and compensate 'position' yourself.",
+   "Burn transform: core.setVertex(i, obj.objMatrix().multiply(core.vertex(i))) for all vertices, then reset position/rotation to 0 and scale to 1."
+  ],
+  "notes": "Script lacks center/burn pivot functionality."
+ },
+ {
+  "id": 7347,
+  "title": "Aligned Particle Spline.js",
+  "summary": "Particle script placing particles along a spline at fixed distances, aligned to the path (domino effects), with offset for animation.",
+  "category": "particles",
+  "status": "reported-working",
+  "versions_working": [
+   "7 beta22"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7347/post-107077",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "Still works here:"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7347/post-107078",
+    "author": "misoversaturated",
+    "polarity": "works",
+    "quote": "I had misplaced the script in the spline folder instead of the particle folter :redface: So everything is ok"
+   }
+  ],
+  "api_lessons": [
+   "Installing a script in the wrong type folder (e.g. Spline instead of Particle) causes runtime JavaScript errors; the folder determines the script type/hooks."
+  ],
+  "notes": "Download only at tres-graficos.jp (article id=70); 'offset' parameter added 2014-03-29."
+ },
+ {
+  "id": 7522,
+  "title": "multi-rows QTVR Object movies",
+  "summary": "Tag script that renders a multi-row series of images around an object for QTVR/Object2VR object movies.",
+  "category": "rendering",
+  "status": "author-only",
+  "versions_working": [
+   "5.7"
+  ],
+  "versions_broken": [],
+  "best_file": "QTVR Object Tag.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7522/post-62017",
+    "author": "Francois",
+    "polarity": "info",
+    "quote": "This script has been tested with Cheetah3D version 5.7 under Snow Leopard"
+   }
+  ],
+  "api_lessons": [
+   "Tag scripts install in the scripts/Tag folder."
+  ],
+  "notes": "Includes ReadMe; image names get a numeric suffix starting at the number set in the tag."
+ },
+ {
+  "id": 7938,
+  "title": "Pivot Setter.js",
+  "summary": "Tool script to set/get an object's pivot numerically; plus a companion 'Set Pivot to Selected Point' script.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7938/post-67186",
+    "author": "AarbronBeast",
+    "polarity": "info",
+    "quote": "It is a script that sets the pivot of a polygon object to the currently selected point on that object."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7938/post-95103",
+    "author": "uncle808us",
+    "polarity": "info",
+    "quote": "Thank you for the handy script."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Pivot Setter at tres-graficos.jp (id=79); Set Pivot to Selected Point at prismaticrealms.com."
+ },
+ {
+  "id": 8015,
+  "title": "Script Request: Copy Object",
+  "summary": "Self-answered request: copyObject(doc, obj) helper duplicating a polygon object's transform, material tags and geometry with UVs.",
+  "category": "utility-library",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post66604-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8015/post-66604",
+    "author": "Edward",
+    "polarity": "info",
+    "quote": "It only copies geometry and materials but can be easily extended."
+   }
+  ],
+  "api_lessons": [
+   "There is no duplicate/clone call in this era's API; copy by doc.addObject(obj.type()) then copying parameters, tags and geometry.",
+   "Geometry copy: core.addVertex(false, v) per vertex, then core.addIndexPolygon(size, vertexIndices, uvArrayOfVec2D) per polygon, using vertexIndex(p,c) and uvCoord(p,c).",
+   "Assign a material: tag = obj.addTagOfType(SHADERTAG); tag.setParameter(\"material\", materialObject); existing ones via obj.materialTags() and tag.linkedToMaterial()."
+  ],
+  "notes": "Intended as a library function for other scripts."
+ },
+ {
+  "id": 8220,
+  "title": "[newbie] how do you guys dev JS in C3D..?",
+  "summary": "Q&A on debugging Cheetah3D scripts, JS engine limits, and an object/parameter dump Macro.",
+  "category": "utility-library",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post68554-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8220/post-68508",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "some network APIs seem to be missing. but you want to use network thing, you can call external script"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8220/post-68554",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "materialAtIndex is still work, but Material::rib() doesn't seem to work anymore."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8220/post-68586",
+    "author": "podperson",
+    "polarity": "info",
+    "quote": "write a general print function that handles objects recursively"
+   }
+  ],
+  "api_lessons": [
+   "Cheetah3D uses macOS JavaScriptCore without DOM or network APIs (no XMLHttpRequest); use OS.system() to call external php/python/etc. for networking.",
+   "Since 4.3/5.0's material system change, Material.rib() no longer works; materialAtIndex(), color(), colorMap(), emission(), shininess() still exist.",
+   "print() only formats strings well; write toString helpers for Vec2D/Vec3D/Vec4D and branch on parameterInfo() type ('Vec3D','Link', etc.).",
+   "No external JS libraries can be included; only core JS built-ins plus Cheetah classes."
+  ],
+  "notes": "Notes that F-Curve access arrived in v6."
+ },
+ {
+  "id": 8307,
+  "title": "BVH Importer.js",
+  "summary": "Tool script importing BVH mocap: bones only, bones + animation, or attach motion to a selected root bone.",
+  "category": "import-export",
+  "status": "author-only",
+  "versions_working": [
+   "6.0"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8307/post-69274",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "It's available only Cheetah3D 6.0+."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8307/post-69480",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "It's a absolute must have script for all v6 users."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8307/post-105484",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "1. select root object at object browser. 2. click 'attach motion' button"
+   }
+  ],
+  "api_lessons": [
+   "User scripts live in ~/Library/Application Support/Cheetah3D/Scripts/<Type> (e.g. Tool), not inside the app bundle; restart Cheetah3D after installing. ~/Library is hidden by default."
+  ],
+  "notes": "Requires 6.0+ (uses F-Curve API). Download only at tres-graficos.jp (id=82). Thread mostly install troubleshooting (Mac App Store user)."
+ },
+ {
+  "id": 8338,
+  "title": "F-Curve Linker.js",
+  "summary": "Polygon script acting as a driver: links a parameter of one object/tag to another's parameter via an F-Curve.",
+  "category": "animation",
+  "status": "mixed",
+  "versions_working": [
+   "6",
+   "7"
+  ],
+  "versions_broken": [
+   "7 beta18"
+  ],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8338/post-73148",
+    "author": "frank beckmann",
+    "polarity": "fix",
+    "quote": "Thanks for the update - renders fine now."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8338/post-102329",
+    "author": "Martin",
+    "polarity": "broken",
+    "quote": "this script stumbles over this missing tag since that script access the tags via the tag index."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8338/post-104399",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "I've introduced a bug in Beta 18 which causes problems with parameter names which contain a dot."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8338/post-104461",
+    "author": "crgreen",
+    "polarity": "info",
+    "quote": "causes a recursive hang since the setParameter() function will trigger a re-build"
+   }
+  ],
+  "api_lessons": [
+   "v7 removed the dummy object-icon tag every object had in v6 and earlier, so tag indices shifted by one; scripts addressing tags by index must be adjusted.",
+   "Calling setParameter() on the script object (e.g. scriptParent) inside buildObject() triggers a rebuild and causes a recursive hang, typically when rendering movies.",
+   "Script objects that drive others must be placed above the driven object in the Object Browser to evaluate correctly at render time.",
+   "Parameter names containing a dot (e.g. 'A prm. name') broke in v7 beta 18 (fixed in beta 19)."
+  ],
+  "notes": "Download only at tres-graficos.jp (id=83), last updated 2013. Old scenes opened in v7 may reference the wrong B tag index. Movie-render hang affected crgreen and Swizl but not Frank/Martin."
+ },
+ {
+  "id": 9250,
+  "title": "Set Changer.js",
+  "summary": "Polygon script switching visibility of objects attached via script tags (scene sets).",
+  "category": "scene-management",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9250/post-76370",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "it's a polygon scripts to switching visibility of object(s) attached script tag."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Download only at tres-graficos.jp (id=94)."
+ },
+ {
+  "id": 9707,
+  "title": "Material Helper.js",
+  "summary": "Tool script that gathers (copies) all textures used in the scene into a chosen folder.",
+  "category": "materials",
+  "status": "fixed-later",
+  "versions_working": [
+   "7",
+   "7.5.1"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9707/post-80289",
+    "author": "robsil",
+    "polarity": "works",
+    "quote": "Great job Hiroto. All textures are gathered."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9707/post-124209",
+    "author": "uncle808us",
+    "polarity": "broken",
+    "quote": "The only problem I have is it will only save to the desktop."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9707/post-124223",
+    "author": "BTT1024",
+    "polarity": "fix",
+    "quote": "\"OS.system( \"mkdir \" + dir );\" needs to be changed to \"OS.system( \"mkdir \" + \"'\" + dir + \"'\");\""
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9707/post-124233",
+    "author": "uncle808us",
+    "polarity": "works",
+    "quote": "I replaced the line in the script and it is working fine."
+   }
+  ],
+  "api_lessons": [
+   "OS.system() passes a raw shell command: quote file paths (e.g. \"mkdir '\" + dir + \"'\") or paths containing spaces silently fail."
+  ],
+  "notes": "Download only at tres-graficos.jp (id=99); the mkdir quoting fix is user-applied, not in the official download. No progress indicator during copying."
+ },
+ {
+  "id": 9816,
+  "title": "Quad UV Map: Perhaps the simplest useful script",
+  "summary": "Macro that maps each selected quad to the full 0-1 UV square.",
+  "category": "uv-texturing",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post81359-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9816/post-81359",
+    "author": "podperson",
+    "polarity": "info",
+    "quote": "if it's both selected and a quad it maps it to the whole UV plane"
+   }
+  ],
+  "api_lessons": [
+   "Per-corner UVs: core.setUVCoord(polyIndex, cornerIndex, new Vec2D(u,v)); test selection with core.polygonSelection(i) and size with core.polygonSize(i); call doc.redrawAll() afterwards."
+  ],
+  "notes": "Family of four related macros on loewald.com intended for keyboard shortcuts."
+ },
+ {
+  "id": 10106,
+  "title": "Voxelate Script",
+  "summary": "Polygonobj script converting its first child mesh into voxel cubes with size, skin, dissolve and culling options.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [
+   "6"
+  ],
+  "versions_broken": [],
+  "best_file": "Voxelate.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10106/post-84669",
+    "author": "pegot",
+    "polarity": "works",
+    "quote": "Really fun script - especially when you combine it with iosurfaces"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10106/post-84830",
+    "author": "llamapixel",
+    "polarity": "works",
+    "quote": "I had the script in an incorrect area ( tool script folder )"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10106/post-85187",
+    "author": "tonbut",
+    "polarity": "info",
+    "quote": "I still don't understand why particle.setIndex doesn't work as I expect."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10106/post-85244",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "how about using addParameterfLink function to get reference guide object?"
+   }
+  ],
+  "api_lessons": [
+   "In a particle script, particle.setIndex(n) did not reliably choose which child is instanced (assignment appeared round-robin); a workaround is a Particle tag with frequency 0 on children to exclude.",
+   "Use obj.addParameterLink(name, true) in buildUI and obj.getParameter(name) in buildObject to reference a guide object instead of relying on child order.",
+   "Polygonobj scripts must be installed in scripts/Polygonobj; placing them in Tool gives errors."
+  ],
+  "notes": "Slow on dense meshes/many voxels. Particle-based version was in progress; Mesh Particle (volume) is a faster built-in alternative."
+ },
+ {
+  "id": 10257,
+  "title": "cHair.js not working under 6.3.1",
+  "summary": "Troubleshooting cHair.js 'normalType' error in 6.3.1; caused by installing it in the wrong scripts folder.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [
+   "6.3.1"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10257/post-86125",
+    "author": "kingc8",
+    "polarity": "broken",
+    "quote": "error: Object.setParameter() couldn't find parameter called normalType"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10257/post-86135",
+    "author": "frank beckmann",
+    "polarity": "fix",
+    "quote": "Wrong folder! It goes here: Scripts->Polygonobj"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10257/post-86145",
+    "author": "kingc8",
+    "polarity": "works",
+    "quote": "Genius! Thanks Frank!"
+   }
+  ],
+  "api_lessons": [
+   "A script run as the wrong type (e.g. a Polygonobj script installed under Particle) gets a different host object, so setParameter calls fail with \"couldn't find parameter called normalType\"."
+  ],
+  "notes": "cHair.js_20120913 from tres-graficos.jp (id=63) works in 6.3.1 when placed in Scripts/Polygonobj."
+ },
+ {
+  "id": 10400,
+  "title": "Extending the Cheetah 3D API",
+  "summary": "Discussion on wrapping PolyCore with helper classes; native objects cannot be extended via prototype.",
+  "category": "utility-library",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post87369-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10400/post-87318",
+    "author": "McShaman",
+    "polarity": "broken",
+    "quote": "PolyCore.prototype.myMethod = function() ... This produces an error."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10400/post-87369",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "Currently it seems to be not available to extend an built-in object like Vec3D, PolyCore, etc. using 'prototype'."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10400/post-87305",
+    "author": "Edward",
+    "polarity": "info",
+    "quote": "the number of vertices isn't equal to the number of corners in the model."
+   }
+  ],
+  "api_lessons": [
+   "Built-in classes (Vec3D, PolyCore, ...) cannot be extended through .prototype, and obj.core() instanceof PolyCore is false; wrap them in your own JS objects instead.",
+   "PolyCore vertices are shared/indexed: vertexCount() != number of polygon corners; use vertexIndex(poly, corner) to map corners to vertices.",
+   "UVs are returned as vectors (uvCoord(p,c)), so vector math (add) works directly."
+  ],
+  "notes": "tg_jp's wrapper sample calls polygonSize() without an index argument (bug; should be polygonSize(i))."
+ },
+ {
+  "id": 10525,
+  "title": "Reflect-O-Matic",
+  "summary": "Tool script creating area lights or planes positioned to reflect onto the selected polygons from the camera's view.",
+  "category": "rendering",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Reflect-o-matic Tool.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10525/post-88489",
+    "author": "podperson",
+    "polarity": "fix",
+    "quote": "I tracked down some more bugs (exposed when I rotated the subject mesh"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10525/post-88501",
+    "author": "podperson",
+    "polarity": "info",
+    "quote": "the polygon positions and normals are not reported correctly to the script (they're the pre-deformation values)."
+   }
+  ],
+  "api_lessons": [
+   "PolyCore positions/normals on skinned (Skeleton-tag) meshes are the pre-deformation values; collapse/duplicate the deformed mesh to get posed geometry.",
+   "Local polygon coordinates must be transformed by the object's matrix to work for objects not at the origin/zero rotation.",
+   "A Target tag can be added to aim created lights/planes at an object instead of computing Euler rotations."
+  ],
+  "notes": "Archived attachment is from the first post; author updated it several times (web page on loewald.com) - the archive may not be the latest."
+ },
+ {
+  "id": 10854,
+  "title": "Multi Parameter.js",
+  "summary": "Tool script to change parameters of multiple objects at once.",
+  "category": "ui-workflow",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10854/post-91640",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "It's a tool script to change parameters of objects at once."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Download only at tres-graficos.jp (id=111); YouTube demo."
+ },
+ {
+  "id": 14324,
+  "title": "Need help",
+  "summary": "Animation retarget tool: copies rotation from a linked source bone hierarchy and adds Orient Constraint tags, optionally recursive.",
+  "category": "rigging",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post127357-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14324/post-127357",
+    "author": "filip c",
+    "polarity": "info",
+    "quote": "I managed to give it an option to apply it to the children too"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14324/post-127359",
+    "author": "filip c",
+    "polarity": "info",
+    "quote": "I finished  see here"
+   }
+  ],
+  "api_lessons": [
+   "Add a constraint: tag = obj.addTagOfType(ORIENTCONSTRAINTTAG) (bare constant, not a string); link its source with tag.setParameter(\"target\", sourceObject).",
+   "tool.addParameterLink(name, false) gives a Tool-script object picker; read it with tool.getParameter(name).",
+   "Call obj.recordParametersForUndo() before changing parameters so edits are undoable; obj.update() afterwards."
+  ],
+  "notes": "Final version posted in thread 14327. Recursion matches children by index only."
+ }
+]

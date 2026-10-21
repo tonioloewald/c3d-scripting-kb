@@ -1,0 +1,976 @@
+[
+ {
+  "id": 465,
+  "title": "script for Morph Animation",
+  "summary": "Script for making morph animation (requires Cheetah3D 2.6.1); download only on tres-graficos.jp.",
+  "category": "animation",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/465/post-3107",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "Morph animation script, required version 2.6.1"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Single post; no feedback. Script not archived; external link only (tres-graficos.jp article 4)."
+ },
+ {
+  "id": 467,
+  "title": "script for Ramdom Array with ramdom polyselection.",
+  "summary": "Polygon script creating a random array of polygons with random polygon-selection indices (for multiple materials) from one polygon object.",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [
+   "4.6"
+  ],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/467/post-22465",
+    "author": "frank beckmann",
+    "polarity": "broken",
+    "quote": "the script is no longer running since the release of Cheetah3d4.6."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/467/post-22467",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I just updated it. actually, many polygon script that I worte is not work on 4.6."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/467/post-25744",
+    "author": "uncle808us",
+    "polarity": "works",
+    "quote": "I just used this to color a bunch of beans, Worked out very well."
+   }
+  ],
+  "api_lessons": [
+   "Many polygon-object scripts written for 2.x/3.x broke in Cheetah3D 4.6 and needed updates (author's statement).",
+   "Multiple materials on a generated mesh are done by giving polygons selection indices; the user then sets the material tag's 'polygon selection' property (0..n-1) per material tag."
+  ],
+  "notes": "Original 2006 script for 2.6.1; fixed for 4.6 on 2008-05-30 (post #1 also notes a 4.6 fix dated 2008-08-30). Sample .jas posted in #8. Script only available externally."
+ },
+ {
+  "id": 664,
+  "title": "script for Wavy Plane",
+  "summary": "Polygon script generating an animatable wavy plane (width, height, wave count, wave scale start/end).",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [
+   "2.6.1",
+   "3.x"
+  ],
+  "versions_broken": [],
+  "best_file": "Wavy Plane600b.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/664/post-80388",
+    "author": "frank beckmann",
+    "polarity": "fix",
+    "quote": "When I got it right this one can create up to 600 waves"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/664/post-80390",
+    "author": "Shift Studio",
+    "polarity": "works",
+    "quote": "Okay, it works with 600 waves, 6 sections per wave. Limited testing."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/664/post-103242",
+    "author": "Shift Studio",
+    "polarity": "info",
+    "quote": "the simple version of the script does unwrap as expected"
+   }
+  ],
+  "api_lessons": [
+   "UI limits of a script parameter come from the min/max passed to addParameterInt/addParameterFloat; users raised 'wave count' (100->600) and section width limits simply by editing those max values.",
+   "A generated polygon script object can carry its own rectangular UV map; UV Unwrap on the result after adding a Subdivision modifier and making editable gave overlapping UVs (make editable and unwrap before subdividing)."
+  ],
+  "notes": "Versions 2.6.1/3.x are the author's own claim. Original script only on tres-graficos.jp; archived files are 2013 modified variants (600 waves; 600b also raises section width to allow ~3 sections per wave)."
+ },
+ {
+  "id": 751,
+  "title": "Alignment",
+  "summary": "Tool script to align a selected object to a reference object along X/Y/Z (min/max/center).",
+  "category": "modeling",
+  "status": "superseded",
+  "versions_working": [],
+  "versions_broken": [
+   "6.0"
+  ],
+  "best_file": "Alignment.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/751/post-4770",
+    "author": "ToddWR",
+    "polarity": "fix",
+    "quote": "it is corrected now and is updated on the site"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/751/post-75702",
+    "author": "Lukasaurus",
+    "polarity": "broken",
+    "quote": "This doesn't seem to work in Cheetah3d 6.0"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/751/post-75704",
+    "author": "frank beckmann",
+    "polarity": "info",
+    "quote": "We have snapping&gadget-mode native built in tools now."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Original geocities link dead; Frank re-uploaded his kept copy in 2012. Reported not working in 6.0; built-in snapping/gadget mode considered a replacement."
+ },
+ {
+  "id": 808,
+  "title": "DOF Helper",
+  "summary": "Tool script that sets a DOF tag's distance from the selected object to the active camera and computes lens radius from camera FOV.",
+  "category": "rendering",
+  "status": "fixed-later",
+  "versions_working": [
+   "7.0b19"
+  ],
+  "versions_broken": [
+   "7"
+  ],
+  "best_file": "DOF Helper.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/808/post-5273",
+    "author": "uncle808us",
+    "polarity": "works",
+    "quote": "DOF helper got it!!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/808/post-104953",
+    "author": "feloneouscat",
+    "polarity": "broken",
+    "quote": "The DOF tag doesn’t appear to work (although Hiroto’s script adds it)."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/808/post-104953",
+    "author": "feloneouscat",
+    "polarity": "fix",
+    "quote": "I’ve modified it so that it works better with C3D v7b19."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/808/post-104954",
+    "author": "frank beckmann",
+    "polarity": "info",
+    "quote": "we have a connectable DOF-Grid and \"Focus on Object:\" as camera properties."
+   }
+  ],
+  "api_lessons": [
+   "User scripts live in ~/Library/Application Support/Cheetah3D/scripts/{Macro,Polygonobj,Splineobj,Tag,Tool}; built-ins are in /Applications/Cheetah3D/scripts/. Folders were not auto-created before v3.5.",
+   "Script files must have a .js extension (downloads were .js.zip and must be unzipped) to appear under Tools > Scripts.",
+   "In v7 the old DOF tag no longer drives depth of field; DOF is set via camera properties (focus distance / 'Focus on Object')."
+  ],
+  "notes": "Original 2006 version external (tres-graficos.jp); archived file is feloneouscat's 2017 v7 modification (works with Cheetah and Falcon renderers; lens radius is a guess). Largely superseded by v7 camera 'Focus on Object' except for focus pulls between objects."
+ },
+ {
+  "id": 1099,
+  "title": "a tale of two splines",
+  "summary": "Tool scripts that build a polygon surface bridging two splines (Between Splines) or a chain of child splines (Between Splines+).",
+  "category": "splines",
+  "status": "reported-working",
+  "versions_working": [
+   "3.5"
+  ],
+  "versions_broken": [],
+  "best_file": "between splines+.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1099/post-6866",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "To get the object to world transformation matrix of a object use the \"obj2WorldMatrix()\" function."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1099/post-6870",
+    "author": "ToddWR",
+    "polarity": "fix",
+    "quote": "installed and corrected"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1099/post-6872",
+    "author": "plant",
+    "polarity": "works",
+    "quote": "Thanks to Todd and Frank this works beautifully, so useful."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1099/post-7174",
+    "author": "t0m_smyk0wski",
+    "polarity": "works",
+    "quote": "thanks! that was easier than expected"
+   }
+  ],
+  "api_lessons": [
+   "Spline core control points are in the object's local coordinate system; multiply them by obj.obj2WorldMatrix() to get world coordinates (calling modCore alone does not apply the object transform).",
+   "Running a Tool-type script from the Polygonobj folder crashed Cheetah3D 3.5; tool scripts must be in the Tool folder and run from the Tools menu.",
+   "Bridging splines does not resample or align start points: twisting results unless spline start points are aligned; output is an open surface (close with Fill Hole)."
+  ],
+  "notes": "between splines.js = two splines; between splines+.js = first spline with others as children, has a Flip option. Original geocities link dead; attachments archived."
+ },
+ {
+  "id": 1415,
+  "title": "Shell script",
+  "summary": "Polygon script that generates parametric seashell meshes.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Seashell.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1415/post-8926",
+    "author": "GuyBrown",
+    "polarity": "info",
+    "quote": "You need to drop it into the scripts > Polygonobj directory."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1415/post-8931",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "excellent script and very nice rendering too."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Only praise/thanks, no explicit run reports. Thread also notes (2007) that AngelScript support was planned but deferred; JavaScript remained the scripting language."
+ },
+ {
+  "id": 1448,
+  "title": "Mirror Copy.js",
+  "summary": "Tool script that mirror-copies object hierarchies (designed for character joints, also polygon objects) including tags, and copies/pastes mirrored pose parameters with L/R name conversion.",
+  "category": "rigging",
+  "status": "mixed",
+  "versions_working": [
+   "4.0",
+   "4.3.1",
+   "5.2",
+   "6.1",
+   "7.0b23"
+  ],
+  "versions_broken": [
+   "4.6",
+   "5.0",
+   "5.2",
+   "6.3.1",
+   "7.0b23",
+   "7.4.2"
+  ],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1448/post-37790",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "some of my script won't work on 5.2, because prototype functions I used for debugging."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1448/post-73517",
+    "author": "BillG",
+    "polarity": "works",
+    "quote": "Thanks, Frank. Works like a charm!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1448/post-108231",
+    "author": "Shift Studio",
+    "polarity": "broken",
+    "quote": "when you have groups and groups with subgroups the script tries to make the new copies as children"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1448/post-121291",
+    "author": "Cadlet",
+    "polarity": "broken",
+    "quote": "I can't seem to make the script work in Mojave 10.14.6 with C3D 7.4.2. Nothing happens"
+   }
+  ],
+  "api_lessons": [
+   "Cheetah3D 5.2 broke scripts that assign Vec2D/Vec3D/Vec4D.prototype.toString; removing those prototype overrides fixed them. Avoid modifying prototypes of built-in API classes.",
+   "Link-type parameters (e.g. IK 'target', 'pole') could not be copied/pasted via get/setParameter for some tags; they must be set manually after copying.",
+   "Tool scripts appear under Tools > Script > Tool Script and need a document relaunch/menu refresh after installing; file must end in .js.",
+   "Mirror-copying meshes via negative scale (or Referenced Particles) rendered black in v7 at the time; child Symmetry creators nested under others did not render (2017 report)."
+  ],
+  "notes": "Repeatedly fixed by author for 4.6 (2008-06), 5.0 (2009-10), 5.2 (2010-01/02). In 6.1 an error was resolved by re-downloading. In 6.3.1/7.0b23 works for joint hierarchies (its purpose) but errors on plain meshes/grouped hierarchies (JS warning). Unresolved 2020 report: nothing happens in 7.4.2 on Mojave. Not archived; only tres-graficos.jp (article 51). For meshes the author pointed to Referenced Polygon.js / Referenced Particles.js."
+ },
+ {
+  "id": 1577,
+  "title": "How to lern JS/Programming for Cheetah - easy way :)",
+  "summary": "Beginner Q&A on learning Cheetah3D JavaScript, with a Hello World macro creating a text spline.",
+  "category": "other",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post10174-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1577/post-10230",
+    "author": "wal3d",
+    "polarity": "broken",
+    "quote": "SyntaxError: illegal character"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1577/post-10404",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "please change 'TEXT' to 'text' (lowercase) at line 4."
+   }
+  ],
+  "api_lessons": [
+   "Entry points by script type: Macro -> main(doc); Tool -> buildUI(tool); Polygonobj/Splineobj -> buildUI(obj) and buildObject(obj); Tag -> buildUI(tag).",
+   "Parameter names passed to setParameter/getParameter are case-sensitive (text spline uses \"text\", not \"TEXT\").",
+   "doc.addObject(TEXT) creates a text spline object; a macro must be placed in the Macro folder to run as main(doc).",
+   "'SyntaxError: illegal character' at line 1 can be caused by multibyte (e.g. full-width) whitespace pasted into the script."
+  ],
+  "notes": ""
+ },
+ {
+  "id": 2110,
+  "title": "Sequential OBJ.js",
+  "summary": "Polygon script that loads a numbered sequence of OBJ files per frame (e.g. Blender fluid/cloth); thread also contains crgreen's Export OBJ Sequence tool script.",
+  "category": "import-export",
+  "status": "fixed-later",
+  "versions_working": [
+   "6.2.1"
+  ],
+  "versions_broken": [],
+  "best_file": "post82310-code0.js",
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2110/post-29395",
+    "author": "vavido",
+    "polarity": "broken",
+    "quote": "when I import one .obj and try to ad the script, set the file and animate the frame-parameter nothing happens"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2110/post-29396",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I fixed that problem, please download latest script file, and try again."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2110/post-29412",
+    "author": "mdillender",
+    "polarity": "works",
+    "quote": "works perfectly!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2110/post-83177",
+    "author": "pegot",
+    "polarity": "works",
+    "quote": "Works perfectly for exporting to Element 3d."
+   }
+  ],
+  "api_lessons": [
+   "Per-frame export pattern: loop doc.setAnimPosition(frame/fps) (time in seconds) then doc.saveToFile(path, 'obj') for each frame.",
+   "OS.runSavePanel('obj') returns a path or null; new File(path).directory() gives its folder.",
+   "tool.addParameterString(name, initValue, build) exists by 2013 (crgreen's exporter uses it); Tool script parameters/buttons show in the Tool tab of the properties panel.",
+   "Particle systems are not exported as geometry by saveToFile; they must first be converted to polygons."
+  ],
+  "notes": "Importer (tg_jp) only on tres-graficos.jp (article 30); fixed 2008-05-21 (UV/cache) and 2009-05-14. Import loads one object per OBJ; 'frame' 1.0 loads name_000001.obj; optional cache for big files. Archived file is crgreen's companion exporter (Tool script), confirmed working incl. Cheetah 6.2.1 on Mavericks. 2020 user still asking for a working importer for 6.3.3 (no answer)."
+ },
+ {
+  "id": 2183,
+  "title": "buildUI => addParameterString...?",
+  "summary": "Q&A on missing/undocumented scripting functions in 2007: string parameters, addParameterSelector, introspection, current anim time.",
+  "category": "other",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post15284-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2183/post-15742",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "I'm sorry but addParameterString() isn't available yet. But I've put it onto my todo list."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2183/post-15299",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "this shows only parameters and post-added functions."
+   }
+  ],
+  "api_lessons": [
+   "for...in over Cheetah3D API objects does not enumerate native methods, only script-added properties; use obj.parameterInfo() (array of [name, type]) to list parameters.",
+   "addParameterString was absent in 2007 (4.x) but is in the 8.1.1 reference as addParameterString(name, initvalue, build); addParameterSelector(name, optionsArray, animate, build) was then undocumented but working.",
+   "Material tags report type() == 102; get the material via doc.materialAtIndex(tag.linkedToMaterial()).",
+   "In 2007 there was no getter for current animation time (only doc.setAnimPosition); later APIs have doc.animPosition()."
+  ],
+  "notes": "Martin (2007) considered a native C++ SDK alongside JS."
+ },
+ {
+  "id": 2581,
+  "title": "Round Box",
+  "summary": "Polygon script creating a rounded (bevelled) box primitive, later with UVs.",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [
+   "5.3"
+  ],
+  "best_file": "Round Box.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2581/post-20043",
+    "author": "BillG",
+    "polarity": "broken",
+    "quote": "I caqn't seem to make objects generated by this script take a texture."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2581/post-20118",
+    "author": "ToddWR",
+    "polarity": "fix",
+    "quote": "an updated script is in the first post... it does a quick job of providing UVs"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2581/post-39631",
+    "author": "BillG",
+    "polarity": "broken",
+    "quote": "seems to be broken in 5.3."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2581/post-39643",
+    "author": "ToddWR",
+    "polarity": "fix",
+    "quote": "the script has been updated and is in the first post"
+   }
+  ],
+  "api_lessons": [
+   "Polygon script objects get no UVs automatically; the script must generate UV coordinates or textures will not map (only flat color shows)."
+  ],
+  "notes": "Archived attachment is the first-post file, which the author updated in place (UVs 2008-04, 5.3 fix 2010-03-01); no explicit post-fix run confirmation beyond thanks. Goes in Polygonobj folder."
+ },
+ {
+  "id": 3528,
+  "title": "bounding box script",
+  "summary": "Tool script creating a box mesh matching the selected object's bounding box (e.g. for game collision boxes).",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "bounding_box.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3528/post-24988",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "above code just do nothing to myobject_core's vertices."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3528/post-25011",
+    "author": "bugaboo",
+    "polarity": "fix",
+    "quote": "I updated the script to transform the new object into the local coordinate system."
+   }
+  ],
+  "api_lessons": [
+   "core.vertex(i) returns a copy; core.vertex(i).add(v) does not change the mesh. Use core.setVertex(i, core.vertex(i).add(v)).",
+   "Translation of a Mat4D (e.g. obj2WorldMatrix) is in m03, m13, m23.",
+   "Object position/rotation/scale are object-mode properties; editing in polygon mode changes vertices, not the object transform."
+  ],
+  "notes": "Archived file is the first (2008-09-26) attachment; later updates mentioned in thread may not be the archived version."
+ },
+ {
+  "id": 4366,
+  "title": "Using RADIANCE as external renderer",
+  "summary": "Q&A leading to a macro that exports per-frame position/rotation (or camera direction) of the selected object to CSV for rendering in RADIANCE.",
+  "category": "import-export",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post30660-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4366/post-30593",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "you need to add some codes for exporting each frames of an animation with loop function"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4366/post-30660",
+    "author": "ephillips",
+    "polarity": "works",
+    "quote": "I have been able to create a simple animation in C3D, with one moving object and one moving camera."
+   }
+  ],
+  "api_lessons": [
+   "To sample animation, step doc.setAnimPosition(t) with t in seconds (dt = 1/frameRate) and re-read obj.obj2WorldMatrix()/getParameter each step.",
+   "getParameter('rotation') returns a vector with h, p, b fields; new Mat4D(ROTATE_HPB, h, p, b) builds the rotation matrix.",
+   "A camera's default view direction is (0,0,-1); rotate it by the HPB matrix to get the view vector.",
+   "File output: new File(path); file.open(WRITE_MODE); file.writeln(...); file.close()."
+  ],
+  "notes": "Script hardcodes 30 fps / 30 frames; untested with parented objects. Points to tg_jp's Radium and Sunflow exporter scripts as references."
+ },
+ {
+  "id": 4394,
+  "title": "Cheetah have facility for slicing an object into arbitrary complexity?",
+  "summary": "Object Chunker.js tool script splits a folder/polygon object into chunks of a target polygon count (for realtime engines).",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Object Chunker.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4394/post-30844",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "This script simply divides it by object order at object browser and polygon order"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4394/post-30845",
+    "author": "ByDesign Games",
+    "polarity": "info",
+    "quote": "Ah excellent, will give it a go"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Chunks follow object-browser and polygon index order, not spatial locality, so results may be poor."
+ },
+ {
+  "id": 6079,
+  "title": "Neil Carters PolygonUV Editor",
+  "summary": "Tool script by Neil Carter for editing polygon UVs numerically.",
+  "category": "uv-texturing",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Polygon UV Editor.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6079/post-46612",
+    "author": "podperson",
+    "polarity": "works",
+    "quote": "Yes, I use a modified version of this all the time."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Reposted by Targos (2010); original author Neil Carter. Positive report is for a modified version linked on the old forum."
+ },
+ {
+  "id": 6373,
+  "title": "Toggle Visibility.js",
+  "summary": "Macro script toggling 'visible in editor' of selected objects (recursive since 2010-11-25).",
+  "category": "ui-workflow",
+  "status": "reported-working",
+  "versions_working": [
+   "5.6"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6373/post-49011",
+    "author": "novolume",
+    "polarity": "works",
+    "quote": "I've got it installed and working via the scripts menu"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6373/post-52000",
+    "author": "apostleofzion",
+    "polarity": "works",
+    "quote": "i placed in the macro folder and the scripts work like a charm."
+   }
+  ],
+  "api_lessons": [
+   "Scripts are type-specific by folder: a Macro placed in the Tool folder silently does nothing.",
+   "Scripts can be given keyboard shortcuts via macOS System Preferences > Keyboard > App Shortcuts using the exact menu title (the .js file name).",
+   "The scripts menu has an 'Update menu' item to load new scripts without restarting Cheetah3D.",
+   "Editor visibility corresponds to the 'visible in 3d view' setting of the object's Mode tag."
+  ],
+  "notes": "Script only on tres-graficos.jp (article 61)."
+ },
+ {
+  "id": 6793,
+  "title": "Command Line .SIA to .FBX with Cheetah",
+  "summary": "Question whether Cheetah3D can be used as a command-line converter (Silo .sia -> FBX).",
+  "category": "import-export",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6793/post-54773",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "the command line jas->fbx converter is a special feature I've added for the Unity guys. It only works for jas->fbx."
+   }
+  ],
+  "api_lessons": [
+   "Cheetah3D's command-line conversion is only jas->fbx (added for Unity); it is not a general command-line format converter."
+  ],
+  "notes": "Archived 'script' is a bash shell script for Autodesk FbxConverter, not Cheetah3D JavaScript."
+ },
+ {
+  "id": 7187,
+  "title": "Getting the transparency color",
+  "summary": "Q&A: reading a material's transparency color from script after the 5.x node material system.",
+  "category": "materials",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post58804-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7187/post-58804",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "after updaing material system ( v. 5.x ), It's not available to access material paramters via scripting."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7187/post-58810",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "my export scripts also cannot add/edit/apply material stuff with 5.x."
+   }
+  ],
+  "api_lessons": [
+   "A material tag holds no material parameters; get the Material via doc.materialAtIndex(tag.linkedToMaterial()).",
+   "With 5.x node materials, parameters like transColor were not accessible via getParameter (worked in 4.7).",
+   "When dumping parameterInfo(), skip getParameter on 'Link'-type parameters (the sample code special-cases them).",
+   "Workaround used: encode material properties (e.g. transparency) in the material name for exporters."
+  ],
+  "notes": "Later (6.2.1) node access APIs were added; see thread 9078/9730."
+ },
+ {
+  "id": 7671,
+  "title": "Scripting in General - Functions list",
+  "summary": "Q&A on finding API functions; tg_jp attaches Object Info.js macro that dumps parameters of object, tags and linked material.",
+  "category": "utility-library",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Object Info.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7671/post-63570",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "the variable list you can check it via script for each objects."
+   }
+  ],
+  "api_lessons": [
+   "Use obj.parameterInfo() / tag.parameterInfo() / material.parameterInfo() to discover parameter names and types to use with getParameter/setParameter."
+  ],
+  "notes": ""
+ },
+ {
+  "id": 7904,
+  "title": "CheetahToAE.js",
+  "summary": "Tool script writing an After Effects .jsx to recreate the Cheetah3D scene/camera animation in AE; later MS Importer.js imports AE camera data via .ms (3ds Max script) files.",
+  "category": "import-export",
+  "status": "mixed",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "MS Importer.js",
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7904/post-65661",
+    "author": "ozzymandiaas",
+    "polarity": "works",
+    "quote": "I just tested this script and it looks like you may have given me a lot of my life back."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7904/post-86525",
+    "author": "crgreen",
+    "polarity": "broken",
+    "quote": "My first test with the script was a big failure"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7904/post-86525",
+    "author": "crgreen",
+    "polarity": "broken",
+    "quote": "rotation values that are completely off (looks like \"gimble lock\" issues to me)"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "CheetahToAE.js itself is only on tres-graficos.jp (article 78) and has a positive report. The archived MS Importer.js (2014) had rotation problems in first test, partly blamed on old AE3D_Export.jsx; no follow-up."
+ },
+ {
+  "id": 8019,
+  "title": "Text Tool",
+  "summary": "Tool script that renders font characters into a texture atlas and builds textured text strings for OpenGL/DirectX use.",
+  "category": "other",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "TextTool.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8019/post-66606",
+    "author": "Edward",
+    "polarity": "info",
+    "quote": "Please modify the directory value in the script to point to the location of the text file."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8019/post-66968",
+    "author": "MrRazorCakes",
+    "polarity": "info",
+    "quote": "Thats a great little script!!"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Requires editing a hardcoded directory path in the script. Only praise, no explicit run confirmation."
+ },
+ {
+  "id": 9041,
+  "title": "Position of object in animation frame",
+  "summary": "Q&A: two macros to read an object's position at a given time (via setAnimPosition or F-curves).",
+  "category": "animation",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post74914-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9041/post-74914",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "it's not a frame number, just second of timeline position to get."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9041/post-74921",
+    "author": "cerra",
+    "polarity": "works",
+    "quote": "Thank you very much, the first one will do just fine."
+   }
+  ],
+  "api_lessons": [
+   "Animation time in the API is in seconds, not frames: doc.setAnimPosition(seconds); save doc.animPosition() first and restore it afterwards.",
+   "Read F-curves directly: obj.parameterWithName('position').takeNodeWithName(doc.currentTake().name).fCurveAtIndex(0|1|2).valueAtTime(t, 0); takeNodeWithName returns null if the parameter is not animated.",
+   "The sample calls doc.animPosition(time) with an argument, but the 8.1.1 reference signature is animPosition() with no arguments."
+  ],
+  "notes": ""
+ },
+ {
+  "id": 9078,
+  "title": "Reading material parameters",
+  "summary": "Q&A: Material.rib() removed in 5.0; later the node-material JS API (6.2.1) is posted and explored, including undocumented node.id().",
+  "category": "materials",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post94048-code2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9078/post-75229",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "that functions was removed when I introduced the new node based materials system in Cheetah3D 5.0."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9078/post-94048",
+    "author": "aaronparr",
+    "polarity": "info",
+    "quote": "its not listed but i tried it and it does return a large number."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9078/post-94048",
+    "author": "aaronparr",
+    "polarity": "info",
+    "quote": "the output parameter did not register as connected. but the input parameter did."
+   }
+  ],
+  "api_lessons": [
+   "Material.rib() was removed in Cheetah3D 5.0 ('undefined is not a function') yet still appears in the docs (it is still listed in the 8.1.1 reference). Do not use it.",
+   "Node API: material.nodeCount()/nodeAtIndex()/rootNode()/addNodeOfType(type)/addConnection(fromID, fromPara, toID, toPara); node.inputAtIndex/outputAtIndex return Parameter objects.",
+   "node.id() is undocumented but works and returns the numeric node ID needed by Material.addConnection().",
+   "Parameter.connected() is true on the input side of a connection but false on the output side; inspect inputs to trace connections."
+  ],
+  "notes": "aaronparr also asked how to assign a material to a polygon object by script; unanswered in thread."
+ },
+ {
+  "id": 9677,
+  "title": "Particle Size Distribution (PSD)",
+  "summary": "Macro that scales particles of an existing particle array/emitter to follow a given particle size distribution and outputs positions/radii.",
+  "category": "particles",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "PSDGenerator.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9677/post-79910",
+    "author": "alcarazr",
+    "polarity": "info",
+    "quote": "you first need to create the particle system (either particle array or particle emitter will do just fine)"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Single post, no feedback. Author suggests frame 60 (time=2s) to reproduce sample images."
+ },
+ {
+  "id": 9730,
+  "title": "Finally , MatMovie updated",
+  "summary": "Polygon script that animates a material's image texture through an image sequence (movie textures) via an animatable 'frame' parameter.",
+  "category": "materials",
+  "status": "superseded",
+  "versions_working": [
+   "6.2.1"
+  ],
+  "versions_broken": [],
+  "best_file": "MatMovie.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9730/post-80898",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "that scripting function was introduced in Cheetah3D 6.2.1 and isn't available in older versions"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9730/post-80900",
+    "author": "lowpolymatt",
+    "polarity": "works",
+    "quote": "Thanks Martin, working now!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9730/post-116126",
+    "author": "frank beckmann",
+    "polarity": "info",
+    "quote": "native movie texture support on all image channels since Cheetah3dv7."
+   }
+  ],
+  "api_lessons": [
+   "Material node functions (e.g. mat.nodeCount()) were introduced in Cheetah3D 6.2.1; older versions throw \"'undefined' is not a function (evaluating 'mat.nodeCount()')\"."
+  ],
+  "notes": "Setup: material name must end in '.mov', contain an image texture node, MatMovie object as child, click find materials, key 'frame'. Bug: after save/reopen the animation can start at a stale frame (workaround in post #14). Superseded by native movie textures in v7."
+ },
+ {
+  "id": 10625,
+  "title": "Read MQO",
+  "summary": "Tool script importing Metasequoia .mqo geometry (no materials).",
+  "category": "import-export",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Read MQO.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10625/post-89421",
+    "author": "Edward",
+    "polarity": "info",
+    "quote": "there is a memory leak somewhere, so large models can't be loaded"
+   }
+  ],
+  "api_lessons": [
+   "As of 2014 the JS API could not create/edit materials for import scripts (geometry only)."
+  ],
+  "notes": "Author reports memory grows until the script ends; large models fail."
+ },
+ {
+  "id": 11838,
+  "title": "Boxcel Particles.js ( colored particles from image )",
+  "summary": "Particle script creating a particle grid colored from an image's pixels.",
+  "category": "particles",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/11838/post-101282",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "I took the 256x256px icon version= 65K particles."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/11838/post-101275",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "The next thing I want to add to the Javascript API will be direct access to the texture objects."
+   }
+  ],
+  "api_lessons": [
+   "As of May 2016 (6.x) the JS API had no direct access to texture objects (Martin planned it; Texture class exists in 8.1.1 reference)."
+  ],
+  "notes": "Script only on tres-graficos.jp (article 115). 1024x1024 image (1M particles) was too heavy per Frank."
+ },
+ {
+  "id": 12767,
+  "title": "Center Pivot",
+  "summary": "Macro that moves the selected object's pivot to the center of its bounding box.",
+  "category": "modeling",
+  "status": "superseded",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "center_pivot.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12767/post-110709",
+    "author": "uncle808us",
+    "polarity": "info",
+    "quote": "Doesn't Menu Bar Tools> Coord System>center pivot point already do this"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12767/post-110711",
+    "author": "KurtF",
+    "polarity": "info",
+    "quote": "Looks like it indeed does. I hadn't noticed that one before."
+   }
+  ],
+  "api_lessons": [
+   "The pivot is a settable object parameter: obj.setParameter('pivot', vec3) followed by obj.update(); bounds come from iterating obj.modCore().vertex(i)."
+  ],
+  "notes": "Built-in Tools > Coord System > Center Pivot does the same; Reset/Burn Pivot also exist."
+ },
+ {
+  "id": 14392,
+  "title": "Picture Frame.js Poly",
+  "summary": "Polygon script creating a picture frame, shared via Google Drive.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14392/post-127928",
+    "author": "MarkusR",
+    "polarity": "info",
+    "quote": "A Script to create a Picture Frame"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "2024 post; only a Google Drive link, not archived."
+ }
+]

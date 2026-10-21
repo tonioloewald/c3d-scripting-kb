@@ -1,0 +1,1067 @@
+[
+ {
+  "id": 463,
+  "title": "my Scripts links",
+  "summary": "tg_jp lists links to three of his scripts (explosion effect, make morph, random array with random poly selection) on his blog.",
+  "category": "other",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/463/post-3105",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "maybe it would be better if you start for every script a new thread"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Index post only; scripts hosted on tres-graficos.jp, no feedback on whether they run. Author agreed to post a separate thread per script."
+ },
+ {
+  "id": 713,
+  "title": "A script to send ripples thru you",
+  "summary": "Ripple polygon-object script: a wave/water surface whose drops are animated by keyframing a 'time' parameter; tg_jp's Ripple+ adds UV, size, steps and drop control via a child Ball.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Ripple+.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/713/post-4495",
+    "author": "Onaric",
+    "polarity": "works",
+    "quote": "A very good script, this is very simple to use and create water..."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/713/post-5881",
+    "author": "Eureka!",
+    "polarity": "works",
+    "quote": "Thanks a lot, both of the links worked . Fantastic script"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/713/post-24260",
+    "author": "JoergensenMBS",
+    "polarity": "broken",
+    "quote": "I have cheetah v4, but it won't work?"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/713/post-24277",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "it's work as I expected. :?: I captured a demo movie, please check it."
+   }
+  ],
+  "api_lessons": [
+   "Ripple works by keyframing a 'time' parameter (first frame 0.0, last frame 1.0); button parameters ('Drop', 'calm', 'register') change internal state that is replayed as time changes.",
+   "A Polygonobj script can use a child object as a control input: Ripple+ reads a child Ball's x/z position as drop position and its radius as drop power (Y position as drop timing)."
+  ],
+  "notes": "Original Ripple.js was on geocities (dead); only tg_jp's Ripple+.js (forum attachment 881) is archived. A v4 user's 'nothing happens' report was answered with a demo movie showing it working; usage requires animating the time parameter. Add a subdivision modifier for smooth results."
+ },
+ {
+  "id": 946,
+  "title": "How can I set rotation value with normal Vec3D value?",
+  "summary": "Q&A on computing a rotation (Mat4D ROTATE angles) that aligns generated polygons to another polygon's normal, for tg_jp's Polygon_Array.js.",
+  "category": "modeling",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/946/post-5980",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "var theta=Math.acos(nVert.y)*180/Math.PI; var phi=atan2(nVert.z,nVert.x)*180/Math.PI;"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/946/post-6035",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "still not work correctly and not optimized yet."
+   }
+  ],
+  "api_lessons": [
+   "new Mat4D(ROTATE, x, y, z) takes angles in degrees (posters convert radians with *180/Math.PI).",
+   "PolyCore.normal(i) returns the normal Vec3D of polygon i.",
+   "Martin's (untested) suggestion for aligning to a unit normal n: theta=acos(n.y), phi=atan2(n.z,n.x) in degrees, then new Mat4D(ROTATE, phi, theta, 0). Note: use Math.atan2, his snippet omits 'Math.'."
+  ],
+  "notes": "Unresolved in thread; Polygon_Array.js test script hosted on tres-graficos.jp. Demo render had ~1.5M polygons."
+ },
+ {
+  "id": 1021,
+  "title": "create spline from polygon edge.",
+  "summary": "Scripts that create splines from polygon edges (all edges or selected edges) for building wireframe-like models with Sweep.",
+  "category": "splines",
+  "status": "reported-working",
+  "versions_working": [
+   "3.5"
+  ],
+  "versions_broken": [
+   "3.4"
+  ],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1021/post-6492",
+    "author": "DaVinci",
+    "polarity": "broken",
+    "quote": "Anyway when trying to run your script I always get those error warnings:"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1021/post-6495",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "first one is for only v.3.5+. I think you use another version of Cheetah3D."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1021/post-6496",
+    "author": "DaVinci",
+    "polarity": "works",
+    "quote": "I must have accidently launched 3.4 that time. Now it works as expected."
+   }
+  ],
+  "api_lessons": [
+   "The 3.5+ build of the script errors when run in Cheetah3D 3.4; the author shipped a separate build for 2.6.1/3.4, so scripts using 3.5 API additions are not backward compatible."
+  ],
+  "notes": "Three downloads on tres-graficos.jp: 3.5+ all-edges, 3.5+ selected-edges, and 2.6.1/3.4. Updated 2008-02-26 to fix inverted normals with Sweep Creator."
+ },
+ {
+  "id": 1161,
+  "title": "Let the sun shine in...",
+  "summary": "Tool script that positions a light like the sun from latitude/longitude, date and time, with saved preferences and a built-in city list.",
+  "category": "rendering",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "The Sun.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1161/post-7327",
+    "author": "peer",
+    "polarity": "broken",
+    "quote": "when I enter the following settings, I get the \"below the horizon\" warning."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1161/post-7351",
+    "author": "ToddWR",
+    "polarity": "fix",
+    "quote": "thanks, I looked into it with a fresh head and found the problem."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1161/post-7366",
+    "author": "peer",
+    "polarity": "works",
+    "quote": "The script works great with the added line of code!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1161/post-7369",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "the lights is headed to -Y by default. So the code for rotation wiil be"
+   }
+  ],
+  "api_lessons": [
+   "Lights point down -Y by default; to aim the sun light at the origin after setting position use obj.setParameter(\"rotation\", new Vec3D(-ang.x-north, 0, ang.y - 90)) (tg_jp's sign correction of Todd's +90).",
+   "Scripts can persist settings with the File object: The Sun creates a folder with File.mkdir() under /Library/Application Support/Cheetah3D and reloads entries next time.",
+   "Sign conventions in the script: latitude positive to the north, longitude positive to the WEST of Greenwich."
+  ],
+  "notes": "Tool script (not a tag), so animating the sun requires keyframing the light manually. The archived file is from post #1; the fixed upload was in post #3 (attachment 1501) and post #1's attachment id (1502) is newer, so post #1 was probably re-uploaded with the fix; not verified. The aim-at-origin rotation line is a manual edit, not in the file."
+ },
+ {
+  "id": 1210,
+  "title": "Moving textures: the actual release",
+  "summary": "MatMovie polygon script + MatTag tag that step an image sequence through material texture channels (color, spec, bump, reflection, transparency) to fake movie textures.",
+  "category": "materials",
+  "status": "superseded",
+  "versions_working": [
+   "pre-5.0"
+  ],
+  "versions_broken": [
+   "5.0.3",
+   "5.0+"
+  ],
+  "best_file": "MatMovie.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1210/post-30353",
+    "author": "Targos",
+    "polarity": "works",
+    "quote": "Thanks Frank it worked great."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1210/post-35824",
+    "author": "bartelsmedia",
+    "polarity": "broken",
+    "quote": "it immediately throws a Javascript Error \"m.rib is not a function\""
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1210/post-55815",
+    "author": "frank beckmann",
+    "polarity": "info",
+    "quote": "the material system introduced with v5 is not accessible via the scripting engine."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1210/post-101421",
+    "author": "frank beckmann",
+    "polarity": "info",
+    "quote": "Cheetah3dv7 supports now movie-textures natively"
+   }
+  ],
+  "api_lessons": [
+   "Pre-v5 materials had texture slots set via material.setParameter(\"colorTex\"|\"specTex\"|\"bumpTex\"|\"reflTex\"|\"transTex\", path, false); this broke with the v5 node-based material system.",
+   "MatMovie found texture paths by parsing material.rib(); in Cheetah3D 5.0.3 this fails with 'm.rib is not a function' (Material.rib() is still listed in the 8.1.1 reference, so re-test before relying on it).",
+   "A script object's custom parameter (e.g. 'frame') must be keyframed to animate: ctrl/right-click the record button and choose 'record frame'; the parameter is not offered in the key editor automatically.",
+   "As of 2011 (v5) the node material system was not scriptable (per Frank Beckmann)."
+  ],
+  "notes": "Needs materials whose texture is the first image of a sequence (originally named .mov). Reports of 'All Frames' not overriding the frame value (2008) and render crashes in 4.6.3. Frank says a 2013 rewrite by Todd exists elsewhere (showthread.php?p=80541). Native movie textures since v7."
+ },
+ {
+  "id": 1327,
+  "title": "100th post and such a deal!",
+  "summary": "ToddWR's Loft polygon script (now lofting splines), plus Round Box and Sierpinski sponge scripts; later a LoftTag to offset a spline's start point.",
+  "category": "modeling",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Loft-2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1327/post-8363",
+    "author": "ToddWR",
+    "polarity": "fix",
+    "quote": "I just checked the DL again, I am guessing you did not used the new one."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1327/post-8389",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "the polygon tesselator of Cheetah3D isn't available via Javascript."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1327/post-100880",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "This case is perfect for the loft script:"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1327/post-100903",
+    "author": "uncle808us",
+    "polarity": "works",
+    "quote": "Got it Solved Thanks TGP and Frank.."
+   }
+  ],
+  "api_lessons": [
+   "Cheetah3D's polygon tessellator is not exposed to JavaScript (Martin, 2007), so capping arbitrary n-gon ends in a script is hard.",
+   "Built-in classes can be extended via prototype, e.g. Vec3D.prototype.str = function(){...} for formatted printing; tg_jp measured no speed difference against a plain function.",
+   "Time code sections with new Date().getTime() (milliseconds)."
+  ],
+  "notes": "Loft-2.js (post 8395) goes with LoftTag.js: put the tag on a spline and set offset (e.g. -0.25 to match a circle to an n-gon). The loft output is a polygon object, not a live sweep. Round Box.js and Sierpinski.js are from post #1. In 2016 Frank showed it in use (version not stated)."
+ },
+ {
+  "id": 1456,
+  "title": "Coils and Arrows",
+  "summary": "Herb's arrow polygon scripts and coil/2D arrow spline scripts; a 2012 rework adds UVs (Arc_Arrow, Arrow, Arrow2D).",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [],
+  "versions_broken": [
+   "6.2"
+  ],
+  "best_file": "Arrow-2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1456/post-77293",
+    "author": "alcarazr",
+    "polarity": "broken",
+    "quote": "I get this strange behavior. This only happens when reducing the angle below 180 degrees."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1456/post-81767",
+    "author": "tonbut",
+    "polarity": "fix",
+    "quote": "edit Arc_Arrow.js and replace line 62 with:"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1456/post-99990",
+    "author": "uncle808us",
+    "polarity": "broken",
+    "quote": "I was trying the polygon script Arrow_D crashes Cheetah every time."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/1456/post-99996",
+    "author": "uncle808us",
+    "polarity": "works",
+    "quote": "Yes working fine Guess I'll ditch Arrow_D."
+   }
+  ],
+  "api_lessons": [
+   "Script type folders matter: a spline script (Arrow2D) put in the Polygonobj folder gives a JavaScript error; it must go in Splineobj.",
+   "Arc_Arrow.js tip fix: line 62 should be var EndTip = new Vec3D(ArcRadius*Math.cos(Angle), 0, -ArcRadius*Math.sin(Angle)); (tonbut)."
+  ],
+  "notes": "Use the 2012 set (post 72163: Arc_Arrow.js, Arrow-2.js, Arrow2D.js) and apply tonbut's Arc_Arrow line-62 fix. The 2007 Arrow_D.js crashes Cheetah (2016, version not stated). Coil splines are meant for use with Sweep."
+ },
+ {
+  "id": 2262,
+  "title": "Scripting Issues",
+  "summary": "Q&A: a polygon script that rotates and renders its child object at each step showed nothing in renders; fixed by generating geometry in buildObject.",
+  "category": "rendering",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post15853-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2262/post-15853",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "you seem to have to add a polygon or something in buildObj() function."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2262/post-15869",
+    "author": "sig33kde",
+    "polarity": "works",
+    "quote": "That worked perfectly"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2262/post-15885",
+    "author": "ToddWR",
+    "polarity": "info",
+    "quote": "by default any objects placed in a polygon object script \"disappear\" to the world."
+   }
+  ],
+  "api_lessons": [
+   "Children of a Polygonobj script are not rendered by default; the script must supply geometry in buildObject(obj) (workaround: add a tiny polygon via obj.core().addPolygon).",
+   "doc.render(path) renders the scene to an image file, so a script can loop: setParameter(\"rotation\", ...), obj.update(), doc.render(\"/path/\"+i+\".jpg\").",
+   "Alternatives suggested: a Macro script on the selected object, or a Tag script that uses tag.owner() to reach the object.",
+   "Always implement buildObject() in polygon scripts (tg_jp, ToddWR)."
+  ],
+  "notes": ""
+ },
+ {
+  "id": 2313,
+  "title": "Rain",
+  "summary": "Macro script that creates many small balls and keyframes them falling and squashing; poster gets unexplained extra keyframes that reset drops to the sky.",
+  "category": "animation",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post16137-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2313/post-16137",
+    "author": "sig33kde",
+    "polarity": "broken",
+    "quote": "about 60% of my ball objects are getting an extra keyframe which will reset their position"
+   }
+  ],
+  "api_lessons": [
+   "Macro scripts can keyframe by calling doc.setAnimPosition(t) (seconds) then obj.setParameter(\"position\"/\"scale\", ...) with Auto Keying enabled; in this thread that produced unexplained extra keys (unresolved)."
+  ],
+  "notes": "Single post, no replies. One possible cause (not stated in the thread): the initial setParameter calls run before the first setAnimPosition, at whatever frame is current."
+ },
+ {
+  "id": 2575,
+  "title": "Bevel.js - test version",
+  "summary": "tg_jp's polygon-script bevel for selected edges (test version); updated in 2012 for Cheetah3D 6.0.",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [
+   "6.0"
+  ],
+  "versions_broken": [
+   "6.0"
+  ],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2575/post-17837",
+    "author": "podperson",
+    "polarity": "works",
+    "quote": "Works nicely on single edges ... not so well on corners with detailed bevels"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2575/post-71918",
+    "author": "Shift Studio",
+    "polarity": "broken",
+    "quote": "Is there a working version of this script for C3D v6.0? As it stands now I get these errors"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2575/post-71930",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I have fixed that problem. so please download again, and try it."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/2575/post-71931",
+    "author": "Shift Studio",
+    "polarity": "works",
+    "quote": "Hey, that works for me!"
+   }
+  ],
+  "api_lessons": [
+   "Scripts from the v4/v5 era could error in Cheetah3D 6.0 and needed an update (Bevel.js was fixed 2012-07-11); the specific API change is not stated."
+  ],
+  "notes": "Install in Scripts/Polygonobj. Known limits: slow on big meshes, rounded corners, CREASE edges flip the round. Largely superseded by the built-in bevel tool (Frank, 2012)."
+ },
+ {
+  "id": 3535,
+  "title": "Bend.js",
+  "summary": "Polygon script bend deformer ported from AS3Dmod; updated in 2010 for Cheetah3D 5.",
+  "category": "modeling",
+  "status": "superseded",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3535/post-24971",
+    "author": "uncle808us",
+    "polarity": "works",
+    "quote": "This is really great! Thank you so much."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3535/post-40922",
+    "author": "Shotster",
+    "polarity": "info",
+    "quote": "Any chance this will (or has been) updated to work with version 5 Cheetah3D?"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3535/post-40928",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I recommend Bend Modifier anyway."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Author updated it for v5 (2010-03-29) but recommends the built-in Bend Modifier; slow on big meshes. The thread has thanks but no explicit report of it running."
+ },
+ {
+  "id": 3792,
+  "title": "Dissolve.js",
+  "summary": "Macro script that deletes only points or edges (dissolve) without deleting the surrounding polygons; replaces Delete Edge.js.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3792/post-26495",
+    "author": "Martin",
+    "polarity": "works",
+    "quote": "that's a really cool script. Very helpful."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3792/post-26499",
+    "author": "tg_jp",
+    "polarity": "broken",
+    "quote": "'Undo' causes crush after executing this macro."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/3792/post-26545",
+    "author": "Martin",
+    "polarity": "info",
+    "quote": "Since scripts can't be undone it looks like that the UndoManager can get into an unstable state."
+   }
+  ],
+  "api_lessons": [
+   "In Cheetah3D 4.x (2009), mesh edits by scripts were not undoable; using Undo after a mesh-modifying macro could crash (-[MWMnGon undoRecordedArrays]). Martin planned a JS undo function, later present as recordParametersForUndo/undo support from 6.0."
+  ],
+  "notes": "Do not use Undo after running it on pre-6.0 versions."
+ },
+ {
+  "id": 4777,
+  "title": "Strange shadows using hair.js",
+  "summary": "Q&A about dark artifacts on a fuzzy tennis ball made with tg_jp's Hair.js; fix is a render-tag setting.",
+  "category": "rendering",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4777/post-34014",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "please check off 'visible in radiosity' option at Render tag for radiosity rendering with hair object."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/4777/post-34019",
+    "author": "SurfingAlien",
+    "polarity": "works",
+    "quote": "thank you so much for all the hints, very helpful!"
+   }
+  ],
+  "api_lessons": [
+   "With script-generated hair (Hair.js), turn off 'visible in radiosity' on its Render tag to avoid dark radiosity artifacts; putting a modifier on the Hair.js object's child keeps .jas files smaller."
+  ],
+  "notes": "The example .jas was on Dropbox. Hair.js itself is not in this thread."
+ },
+ {
+  "id": 5865,
+  "title": "Mandelbulb.js",
+  "summary": "Polygon script that builds Mandelbulb/Julia fractal meshes by calling a bundled compiled helper and reading back its output file.",
+  "category": "modeling",
+  "status": "mixed",
+  "versions_working": [],
+  "versions_broken": [
+   "5.5"
+  ],
+  "best_file": "Mandelbulb.js",
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/5865/post-43737",
+    "author": "archie",
+    "polarity": "broken",
+    "quote": "when i check the julia parameter box i get an error, line 175, *can't find variable: julia_c*"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/5865/post-43747",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "that's a bug. I already fixed that, please download the latest (Mandelbulb_20100617.zip)"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/5865/post-47789",
+    "author": "archie",
+    "polarity": "works",
+    "quote": "installed the new one from the tres graficos site, this is what i get when moving the cam outwards:"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/5865/post-48807",
+    "author": "SurfingAlien",
+    "polarity": "broken",
+    "quote": "so I tried your suggestion but still the script doesn't work..."
+   }
+  ],
+  "api_lessons": [
+   "Scripts can run external programs with OS.system(cmd); Mandelbulb.js runs a bundled Unix executable that writes results to /tmp/mandelbulb.data, then reads that with File.",
+   "new File(scriptPath).directory() locates the script's folder so bundled helpers can be found; escape spaces in the path (replace ' ' with '\\ ') before passing it to OS.system.",
+   "The script's comments say versions older than 5.5 need the helper's absolute path set by hand."
+  ],
+  "notes": "Helper binary needs OS X 10.6 (rebuild with Xcode for 10.5). The archived Mandelbulb.js is the DEBUG build from post 47820, not the release on tres-graficos.jp. SurfingAlien (C3D 5.5, 10.6.4, home folder on a second partition) never got it working, even after changing the temp file path. Very high resolutions produce huge polygon counts."
+ },
+ {
+  "id": 6604,
+  "title": "Mirror PolygonObjects",
+  "summary": "Polygon script that mirrors all polygon children across one freely placed mirror plane (a symmetry creator for many objects).",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Mirror_Poly-2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6604/post-52345",
+    "author": "Herb",
+    "polarity": "info",
+    "quote": "The function - as I experienced it - does not return a number as described in the help"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6604/post-52355",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "Asigning materials APIs still are missing. we have to wait for implimentation."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6604/post-52365",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "Clever! Thank you."
+   }
+  ],
+  "api_lessons": [
+   "In 2010 (v5) there was no script API for assigning materials, so script-generated mirrored geometry lost its materials.",
+   "Herb reported Vec3D.dot() returned a vector with equal components instead of the documented Number (tg_jp agreed); check its return type in your target version.",
+   "Mat4D elements are named properties (m00..m33), not an array; mat[i][j] fails, but for (var k in mat) with mat[k] access works (skip function members).",
+   "tg_jp: in polygon scripts, do smoothing setup (setSmooth) at the start of buildObject() rather than with a 'set smooth' button, like built-in polygon objects."
+  ],
+  "notes": "Similar to tg_jp's older mirror script (thread 1448). Use the revised Mirror_Poly-2.js (post 52363)."
+ },
+ {
+  "id": 6776,
+  "title": "Polygon Splitter.js",
+  "summary": "Tool script that splits a polygon object into separate objects by its polygon selection sets, named original_[polysel number].",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Polygon Splitter.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/6776/post-55167",
+    "author": "Targos",
+    "polarity": "info",
+    "quote": "Another handy tool! You're too good to us Hiroto!"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Install in Scripts/Tool. Thanks only; no report of it running."
+ },
+ {
+  "id": 7356,
+  "title": "Brick Spline Particles.js",
+  "summary": "Particle script that lays out bricks along splines to build brick walls easily.",
+  "category": "particles",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7356/post-62605",
+    "author": "Novus",
+    "polarity": "works",
+    "quote": "Yes, thank you!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7356/post-84850",
+    "author": "scala",
+    "polarity": "broken",
+    "quote": "error: 'undefined' is not a function (evaluating 'core.addParticle()')"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7356/post-84852",
+    "author": "scala",
+    "polarity": "works",
+    "quote": "Frank - mein Held. Es war bei den Polygonskipten."
+   }
+  ],
+  "api_lessons": [
+   "If a Particle script is put in the Polygonobj folder, obj.core() returns a PolyCore and fails with \"'undefined' is not a function (evaluating 'core.addParticle()')\"; it must go in the Particle scripts folder."
+  ],
+  "notes": "Frank posted an Object Browser screenshot of the hierarchy (post 62604). Hosted on tres-graficos.jp."
+ },
+ {
+  "id": 7690,
+  "title": "CheetahBullet - physics simulation script",
+  "summary": "Script set that runs Bullet physics (rigid bodies and cloth) for Cheetah3D: a Sim Tag bakes a simulation file and Rep objects play it back.",
+  "category": "animation",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7690/post-63613",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "click create button at \"create sim. file\" of Sim Tag to create simulation result file."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7690/post-63633",
+    "author": "Novus",
+    "polarity": "works",
+    "quote": "Thank you Hiroto for the Video. Now it works!!!"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/7690/post-64526",
+    "author": "tg_jp",
+    "polarity": "broken",
+    "quote": "it's a bug for Cone primitive object. try to not use Cone primitive, but raw polygon"
+   }
+  ],
+  "api_lessons": [
+   "Workflow pattern: an expensive computation is saved to a result file by a tag button, and a 'Rep' polygon script plays it back by keyframing only its 'frame' parameter (no position/rotation/scale keys).",
+   "Script-generated geometry won't paste into another document; copy the Rep object, 'Make Editable' the copy, then copy that."
+  ],
+  "notes": "Collision bug with Cone primitives: use Make Editable first. Static colliders need mesh type 'static mesh'. A how-to video on YouTube is needed to use it. Hosted on tres-graficos.jp."
+ },
+ {
+  "id": 8024,
+  "title": "Edge N Splitter.js",
+  "summary": "Tool script that splits selected edges into N segments; undo/redo support added for Cheetah3D 6.0+.",
+  "category": "modeling",
+  "status": "fixed-later",
+  "versions_working": [
+   "6.0"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8024/post-66628",
+    "author": "frank beckmann",
+    "polarity": "works",
+    "quote": "This is an amazing script."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8024/post-66628",
+    "author": "frank beckmann",
+    "polarity": "broken",
+    "quote": "Making an \"undo\" will crash Cheetah3d under SnowLeopard."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8024/post-69275",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I updated this script for undo/redo function. please update it if you have upgraded Cheetah3D 6.0."
+   }
+  ],
+  "api_lessons": [
+   "Undo/redo of script mesh edits is only possible from Cheetah3D 6.0; before that, Undo after a tool script changed geometry crashed Cheetah3D."
+  ],
+  "notes": "tres-graficos downloads sometimes saved as a nameless file or .cpgz; renaming it to .zip fixed it (2013). It splits edges but does not connect the new points."
+ },
+ {
+  "id": 8884,
+  "title": "Alignment+.js",
+  "summary": "Tool script that aligns polygon/spline objects and groups, with margin option and undo/redo; rewrite of Todd's Alignment.js.",
+  "category": "ui-workflow",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/8884/post-73777",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "update 20111011: bug fixed for Cheetah3D 5.8 ( Undo/Redo functions are disabled with Cheetah3D 5.8. )"
+   }
+  ],
+  "api_lessons": [
+   "Script undo/redo is not available in Cheetah3D 5.8; scripts using it must turn it off there (Alignment+ does)."
+  ],
+  "notes": "Single post, no feedback."
+ },
+ {
+  "id": 9060,
+  "title": "Jas Utility",
+  "summary": "Macro + Python helper that saves the scene as text .jas and parses it to get skeleton-tag skin weights not available through JavaScript.",
+  "category": "utility-library",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "Jas Utility Demo.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9060/post-75066",
+    "author": "Edward",
+    "polarity": "info",
+    "quote": "Extracts data from jas files that is not accessible through javascript."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/9060/post-75077",
+    "author": "KurtF",
+    "polarity": "info",
+    "quote": "I'm not at a point where I can use them, but I plan on studying both carefully."
+   }
+  ],
+  "api_lessons": [
+   "Skin weights in skeleton tags were not accessible from JavaScript (2012).",
+   "Workaround: doc.saveToFile(\"/tmp/Temp.jas\",\"jas\") with Preferences > Files > .jas 'binary' unchecked, run a parser via OS.system(\"python ...\"), then read its JSON with new File(path), open(READ_MODE), read(file.size())."
+  ],
+  "notes": "Requires the companion 'Jas Utility.py' in the Macro folder and a system Python (current macOS has no bundled python, so the call may need python3)."
+ },
+ {
+  "id": 10301,
+  "title": "MS Importer.js",
+  "summary": "Tool script that imports .ms (3ds Max script) files exported from After Effects with AE3D_Export.jsx.",
+  "category": "import-export",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10301/post-86491",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "It's a tool script for importing .ms file that is exported for 3dsMax from AfterEffect"
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Single post, no feedback. Hosted on tres-graficos.jp."
+ },
+ {
+  "id": 10376,
+  "title": "Array of all objects",
+  "summary": "Self-answered Q&A: a recursive helper that collects every object in the scene into an array.",
+  "category": "utility-library",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post87098-code0.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10376/post-87098",
+    "author": "McShaman",
+    "polarity": "info",
+    "quote": "I've worked something out... For anybody else looking see code below:"
+   }
+  ],
+  "api_lessons": [
+   "Get all scene objects by recursing from doc.root() using childCount() and childAtIndex(i)."
+  ],
+  "notes": "In the posted code the recursive call doesn't pass 'nest', and 'object.childCount' checks that the method exists rather than calling it; it still works for a full traversal."
+ },
+ {
+  "id": 10410,
+  "title": "UV Patch.js",
+  "summary": "Tool script that wraps/patches a polygon object onto a guide object using UV information (shrink-wrap), and can create a plane mesh from UVs.",
+  "category": "uv-texturing",
+  "status": "reported-working",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10410/post-87443",
+    "author": "kraster",
+    "polarity": "works",
+    "quote": "It's effectively a shrink wrap tool. Works very well."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/10410/post-87512",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "old version had a lot of bugs, so please update it."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Slow on big meshes. Updated many times between 2014-04 and 2014-06 (bug fixes, patch mode, speed); get the latest from tres-graficos.jp. Demo video on YouTube."
+ },
+ {
+  "id": 12263,
+  "title": "Slicer.js",
+  "summary": "Tool script that slices a polygon object into pieces (random seed controlled); Cheetah3D v7+ only.",
+  "category": "modeling",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12263/post-105574",
+    "author": "tg_jp",
+    "polarity": "info",
+    "quote": "It's a tool script to slice polygon object. v.7+ only."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12263/post-105877",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "now same random seed value creates same result."
+   }
+  ],
+  "api_lessons": [],
+  "notes": "Only thanks from others; no explicit run reports."
+ },
+ {
+  "id": 12343,
+  "title": "Sound Loader.js - v7+ only",
+  "summary": "Polygon script with a compiled helper that loads audio files as f-curve parameters (left/right/custom wave) to drive animation via an F-Curve Controller tag.",
+  "category": "animation",
+  "status": "mixed",
+  "versions_working": [
+   "7.b21"
+  ],
+  "versions_broken": [],
+  "best_file": null,
+  "hosted_externally": true,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12343/post-106710",
+    "author": "tg_jp",
+    "polarity": "fix",
+    "quote": "I found a bug when sound file path contains * character. I have updated it."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12343/post-106714",
+    "author": "CpH",
+    "polarity": "works",
+    "quote": "Sound Loader updated version 20170401 fixed the import issues I've been experiencing."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12343/post-114028",
+    "author": "frank beckmann",
+    "polarity": "broken",
+    "quote": "as soon as I enable the f-Curve-controller tag script Cheetah3d crashes instantly every time."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12343/post-115206",
+    "author": "frank beckmann",
+    "polarity": "broken",
+    "quote": "I can´ t get it to run right now"
+   }
+  ],
+  "api_lessons": [
+   "Pattern: a script calls a bundled helper executable (in Scripts/Polygonobj/Sound Loader/) that writes /tmp/soundLoader.data, which the script then reads; on macOS 10.12+ Gatekeeper must allow the helper to run.",
+   "File paths passed to helpers through the shell must be escaped; special characters in sound file paths broke loading until the 2017-04-01 fix.",
+   "Cheetah3D does not play audio, so loaded sound only drives f-curves (Frank, 2025)."
+  ],
+  "notes": "Install Sound Loader.js plus 'Sound Loader Helper' in Scripts/Polygonobj; needs the separate F-Curve Controller tag script. Worked for CpH (C3D 7 beta, macOS 10.12) after the fix; 2018 reports on macOS 10.14 crash on mp3 load or when the F-Curve Controller is enabled; by 2019 Frank could not get it working."
+ },
+ {
+  "id": 12890,
+  "title": "soloSelected",
+  "summary": "Macro pair: soloSelected hides all other top-level objects in the editor (except cameras/lights); showAll makes them visible again.",
+  "category": "scene-management",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "soloSelected.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12890/post-111863",
+    "author": "KurtF",
+    "polarity": "info",
+    "quote": "Very similar. I'm just iterating over all objects that are not cameras or lights."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/12890/post-111873",
+    "author": "Jeanny",
+    "polarity": "info",
+    "quote": "Thanks you for generously sharing your script with us!"
+   }
+  ],
+  "api_lessons": [
+   "Editor visibility can be toggled by setting \"editorActive\" on the object's first tag: obj.tagAtIndex(0).setParameter(\"editorActive\", false) (as the script does).",
+   "The script skips cameras and lights by type() numbers 2 and 5; the CAMERA/light-family constants are a safer choice than hard-coded numbers."
+  ],
+  "notes": "Only iterates direct children of doc.root(), not nested objects. Hiroto's 'Make visible Solo/All.js' (thread 7106) is similar. showAll.js is the companion."
+ },
+ {
+  "id": 13505,
+  "title": "Dynamically update text value of Text Spline Object",
+  "summary": "Tag script that reads a Skylight's date/time and writes it into a Text spline's text, updating per frame.",
+  "category": "splines",
+  "status": "author-only",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "TimeOfDay.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/13505/post-118232",
+    "author": "Helmut",
+    "polarity": "info",
+    "quote": "Date seems to be an integer, starting from 0 (00:00 @ 01.01.yy) to some max value, 525 600"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/13505/post-118235",
+    "author": "jdmac",
+    "polarity": "works",
+    "quote": "Success. Text Spline text is updated by the Skylight date value."
+   }
+  ],
+  "api_lessons": [
+   "Skylight's 'date' parameter is a float giving minutes since Jan 1 00:00 (max 525600); convert with new Date(year, 0, 1, 0, Math.floor(d), 60*(d-Math.floor(d))).",
+   "A Tag script using performExpression(tag) with owner.setParameter(\"text\", str) updates a Text spline per frame. The first try (applyParameters, \"Text\"/\"Date\" capitalised) showed no change; the working version uses lowercase \"text\"/\"date\".",
+   "tag.addParameterLink(\"Skylight\", true) adds an object-link parameter; tag.getParameter(\"Skylight\") returns the linked object."
+  ],
+  "notes": "Includes a Skylight_to_text.jas demo scene. Only the author confirms it works."
+ },
+ {
+  "id": 14327,
+  "title": "Retarget animation",
+  "summary": "Tool script that retargets animation between skeletons/objects by copying rotations and adding Orient (and optional Point) constraint tags, optionally for the whole hierarchy.",
+  "category": "rigging",
+  "status": "fixed-later",
+  "versions_working": [
+   "7.3.3",
+   "7.5.1",
+   "7.5.2"
+  ],
+  "versions_broken": [
+   "7.3.3",
+   "7.5.2",
+   "8.0b3"
+  ],
+  "best_file": "retarget-2.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14327/post-127362",
+    "author": "Lydia",
+    "polarity": "broken",
+    "quote": "when I select the script, Cheetah crashes (in version 7.3.3 and 7.5.2)."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14327/post-127368",
+    "author": "filip c",
+    "polarity": "info",
+    "quote": "I'm using it in 7.5.1 without problems, but it crashes in 8.0 B3."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14327/post-127369",
+    "author": "filip c",
+    "polarity": "fix",
+    "quote": "It seems like a checkbox gave some problems, so I modified it to a normal button."
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14327/post-127370",
+    "author": "Lydia",
+    "polarity": "works",
+    "quote": "Thanks, now it works in both versions!"
+   }
+  ],
+  "api_lessons": [
+   "A Tool script that called tool.addParameterBool(\"+ children\", true) with only 2 of its 6 documented arguments (name, init, min, max, animate, build) crashed Cheetah3D on selection in 7.3.3, 7.5.2 and 8.0b3; replacing it with addParameterButton fixed it. Pass all six arguments.",
+   "Constraint tags from script: var t = obj.addTagOfType(ORIENTCONSTRAINTTAG); t.setParameter(\"target\", otherObj); POINTCONSTRAINTTAG works the same way.",
+   "Call obj.recordParametersForUndo() before changing parameters in a tool script, then obj.update()."
+  ],
+  "notes": "Use retarget-2.js (post 127369). Partly written with ChatGPT help. Handy for FBX/mocap (Mixamo etc.) imports."
+ },
+ {
+  "id": 14381,
+  "title": "2 splines below addObject(SWEEP)",
+  "summary": "Q&A: building a parametric window frame by adding a Sweep with two rectangle splines under a polygon script; poster couldn't get a SplineCore from the sweep.",
+  "category": "splines",
+  "status": "discussion",
+  "versions_working": [],
+  "versions_broken": [],
+  "best_file": "post127850-inline.js",
+  "hosted_externally": false,
+  "evidence": [
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14381/post-127850",
+    "author": "MarkusR",
+    "polarity": "broken",
+    "quote": "I stuck at sweep because I not get the core()"
+   },
+   {
+    "post_url": "https://www.cheetah3d.com/forum/index.php?threads/14381/post-127865",
+    "author": "MarkusR",
+    "polarity": "info",
+    "quote": "seems I not saw the object type rect and spline .."
+   }
+  ],
+  "api_lessons": [
+   "A SWEEP object from doc.addObject(SWEEP) is a creator, so it has no SplineCore to draw into; add spline child objects instead (e.g. doc.addObject(RECT) or SPLINE) and parent them under the sweep.",
+   "Pattern for child objects in a polygon script's buildObject: create once (if obj.childCount()==0) with doc.addObject(...) and obj.addChildAtIndex(child, i), then update their parameters (e.g. BOX sizeX/sizeY/sizeZ) on every rebuild and call child.update()."
+  ],
+  "notes": "Poster self-resolved by finding the RECT and SPLINE object types; no final code posted. Also asked how to clear all paths of a spline before rebuilding (unanswered)."
+ }
+]

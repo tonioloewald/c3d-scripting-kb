@@ -1,0 +1,125 @@
+// Source: https://www.cheetah3d.com/forum/index.php?threads/1801/post-12227
+// Author: MrTAToad (Cheetah3D forum), posted 2007-06-09
+// Thread: "Grid objects"
+// Treated as CC-BY: credit the author above. Archived unmodified below.
+// ---------------------------------------------------------------------
+// This script is designed to create a grid of boxes of a given scale
+// Written by Nicholas Kingsley
+// Version 1.04 - Fix object size when grouping them.  As child scales are affected by the parent, it seems that we just need to use a scale of 1.0,1.0,1.0
+//					after setting the parent scale.
+// 					The grouping problem does however affect child positioning if the Z scale!=1.0
+//					To get around this, it appears that, as the scale is 1.0,1.0,1.0, we position in increments of 1.0,0.0,1.0
+
+var gridXObject="Max Columns";
+var gridYObject="Max Rows";
+var xScale="X Scale";
+var yScale="Y Scale";
+var zScale="Z Scale";
+var xStep="X Step";
+var zStep="Z Step";
+var justBorder="Only Border ?";
+var groupObject="Group Objects ?";
+
+function buildUI(tool)
+{
+	tool.addParameterSeparator("Grid Object.js");
+	tool.addParameterInt(gridXObject,8,1,256,false,true);
+	tool.addParameterInt(gridYObject,8,1,256,false,true);
+	tool.addParameterFloat(xScale,1.0,0.1,256.0,false,true);
+	tool.addParameterFloat(yScale,1.0,0.1,256.0,false,true);
+	tool.addParameterFloat(zScale,1.0,0.1,256.0,false,true);
+	tool.addParameterFloat(xStep,0.0,-256.0,256.0,false,true);
+	tool.addParameterFloat(zStep,0.0,-256.0,256.0,false,true);
+	tool.addParameterBool(justBorder,false,false,true,false,true);
+	tool.addParameterBool(groupObject,false,false,true,false,true);
+	tool.addParameterButton("Apply","Apply","apply");
+}
+
+function apply(tool)
+{
+var y;
+var x;
+var box;
+var obj;
+var root;
+var doc;
+var xPos;
+var zPos;
+var process;
+var child;
+var pos;
+
+	doc=tool.document();
+	root=doc.root();
+	child=null;
+	pos=0;
+				
+	zPos=0.0;
+	for (y=0; y<tool.getParameter(gridYObject); y++)
+	{
+		xPos=0.0;
+		for (x=0; x<tool.getParameter(gridXObject); x++)
+		{
+			process=true;
+			if (tool.getParameter(justBorder)==true)
+			{
+				if (x>0 && y>0 && x<tool.getParameter(gridXObject)-1 && y<tool.getParameter(gridYObject)-1)
+				{
+					process=false;
+				}
+			}
+				
+			if (process)
+			{
+				obj=doc.addObject(BOX);			
+				
+				if (x==0 && y==0 || tool.getParameter(groupObject)==false)
+				{
+					obj.setParameter("scale",new Vec3D(tool.getParameter(xScale),tool.getParameter(yScale),tool.getParameter(zScale)));
+				}
+				else
+				{
+					obj.setParameter("scale",new Vec3D(1.0,1.0,1.0));
+				}
+				
+				if (tool.getParameter(groupObject))
+				{
+					if (x==0 && y==0)
+					{
+						child=obj;
+					}
+					else
+					{
+						if (child)
+						{
+							child.addChildAtIndex(obj,pos);
+						}
+					}
+					
+					pos++;
+				}
+				
+				obj.setParameter("position",new Vec3D(xPos,0.0,zPos));	
+				obj.update();
+			}
+			
+			if (tool.getParameter(groupObject))
+			{
+				xPos+=1.0+tool.getParameter(xStep);
+			}
+			else
+			{
+				xPos+=tool.getParameter(xScale)+tool.getParameter(xStep);
+			}
+		}
+		
+		if (tool.getParameter(groupObject))
+		{
+			zPos+=1.0+tool.getParameter(zStep);
+		}
+		else
+		{
+			zPos+=tool.getParameter(zScale)+tool.getParameter(zStep);
+		}
+	}
+}

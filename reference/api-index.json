@@ -1,0 +1,1213 @@
+{
+ "classes": {
+  "Base": {
+   "inherits": null,
+   "methods": {
+    "addParameterBool": [
+     "void addParameterBool (String paraname, Boolean initvalue, Boolean paramin, Boolean paramax, Boolean animate, Boolean build)"
+    ],
+    "addParameterButton": [
+     "void addParameterButton (String paraname, String buttonname, String functionname)"
+    ],
+    "addParameterColor": [
+     "void addParameterColor (String paraname, Vec4D initvalue, Number paramin, Number paramax, Boolean animate, Boolean build)"
+    ],
+    "addParameterFloat": [
+     "void addParameterFloat (String paraname, Number initvalue, Number paramin, Number paramax, Boolean animate, Boolean build)"
+    ],
+    "addParameterInt": [
+     "void addParameterInt (String paraname, Number initvalue, Number paramin, Number paramax, Boolean animate, Boolean build)"
+    ],
+    "addParameterLink": [
+     "void addParameterLink (String paraname, Boolean build)"
+    ],
+    "addParameterSelector": [
+     "void addParameterSelector (String paraname, Array options, Boolean animate, Boolean build)"
+    ],
+    "addParameterString": [
+     "void addParameterString (String paraname, String initvalue, Boolean build)"
+    ],
+    "addParameterSeparator": [
+     "void addParameterSeparator (String paraname)"
+    ],
+    "addParameterTexture": [
+     "void addParameterTexture (String paraname, String initvalue, Boolean build)"
+    ],
+    "addParameterVec2D": [
+     "void addParameterVec2D (String paraname, Vec2D initvalue, Number paramin, Number paramax, Boolean animate, Boolean build)"
+    ],
+    "addParameterVec3D": [
+     "void addParameterVec3D (String paraname, Vec3D initvalue, Number paramin, Number paramax, Boolean animate, Boolean build)"
+    ],
+    "document": [
+     "Document document ()"
+    ],
+    "family": [
+     "Number family ()"
+    ],
+    "getParameter": [
+     "void getParameter (String paraname) void getParameter (String paraname, Number time)",
+     "void getParameter (String paraname) void getParameter (String paraname, Number time)"
+    ],
+    "modifiedHint": [
+     "Number modifiedHint ()"
+    ],
+    "modifiedHint2Root": [
+     "Number modifiedHint2Root ()"
+    ],
+    "owner": [
+     "Base owner ()"
+    ],
+    "parameterCount": [
+     "Number parameterCount ()"
+    ],
+    "parameterAtIndex": [
+     "Parameter parameterAtIndex (Number index)"
+    ],
+    "parameterInfo": [
+     "String[][] parameterInfo ()"
+    ],
+    "parameterWithName": [
+     "Parameter parameterWithName (String name)"
+    ],
+    "recordGeometryForUndo": [
+     "void recordGeometryForUndo ()"
+    ],
+    "recordParametersForUndo": [
+     "void recordParametersForUndo ()"
+    ],
+    "selection": [
+     "Number selection ()"
+    ],
+    "script": [
+     "String script ()"
+    ],
+    "scriptPath": [
+     "String scriptPath ()"
+    ],
+    "setParameter": [
+     "void setParameter (String paraname, void value) void setParameter (String paraname, void value, Boolean update)",
+     "void setParameter (String paraname, void value) void setParameter (String paraname, void value, Boolean update)"
+    ],
+    "type": [
+     "Number type ()"
+    ],
+    "updateModifiedHint": [
+     "void updateModifiedHint (Number hint)"
+    ]
+   },
+   "properties": []
+  },
+  "Cluster": {
+   "inherits": null,
+   "methods": {
+    "controlPointCount": [
+     "Number controlPointCount ()"
+    ],
+    "controlPointIndexArray": [
+     "Number[] controlPointIndexArray ()"
+    ],
+    "controlPointWeightArray": [
+     "Number[] controlPointWeightArray ()"
+    ],
+    "setControlPoints": [
+     "void setControlPoints (Number[] indices,Number[] weights)"
+    ]
+   },
+   "properties": []
+  },
+  "Document": {
+   "inherits": null,
+   "methods": {
+    "activeCamera": [
+     "Object activeCamera ()"
+    ],
+    "addTake": [
+     "Take addTake (String takename)"
+    ],
+    "animationEnd": [
+     "Number animationEnd ()"
+    ],
+    "animPosition": [
+     "Number animPosition ()"
+    ],
+    "addMaterial": [
+     "Material addMaterial (String type, String name)"
+    ],
+    "addObject": [
+     "Object addObject (Number type)"
+    ],
+    "currentRenderer": [
+     "Base currentRenderer ()"
+    ],
+    "currentTake": [
+     "Take currentTake ()"
+    ],
+    "editMode": [
+     "Number editMode ()"
+    ],
+    "fileName": [
+     "String fileName ()"
+    ],
+    "materialAtIndex": [
+     "Material materialAtIndex (Number index)"
+    ],
+    "materialCount": [
+     "Number materialCount ()"
+    ],
+    "releaseRedrawLock": [
+     "void releaseRedrawLock ()"
+    ],
+    "render": [
+     "void render () void render (String filename)",
+     "void render () void render (String filename)"
+    ],
+    "redrawAll": [
+     "void redrawAll ()"
+    ],
+    "removeMaterial": [
+     "void removeMaterial ( Material mat)"
+    ],
+    "removeTake": [
+     "void removeTake (String takename)"
+    ],
+    "renameTake": [
+     "void renameTake (String takename,String newname)"
+    ],
+    "rendererAtIndex": [
+     "Base rendererAtIndex (Number index)"
+    ],
+    "rendererCount": [
+     "Number rendererCount ()"
+    ],
+    "retainRedrawLock": [
+     "void retainRedrawLock ()"
+    ],
+    "root": [
+     "Object root ()"
+    ],
+    "saveToFile": [
+     "void saveToFile (String filename, String type)"
+    ],
+    "selectObject": [
+     "void selectObject (Object obj,Boolean extendSelection)"
+    ],
+    "selectedObject": [
+     "Object selectedObject ()"
+    ],
+    "selectedObjects": [
+     "Object[] selectedObjects (Boolean flat)"
+    ],
+    "setAnimPosition": [
+     "void setAnimPosition (Number time)"
+    ],
+    "setCurrentRenderer": [
+     "void setCurrentRenderer (Number index)"
+    ],
+    "setCurrentTake": [
+     "void setCurrentTake (String takename)"
+    ],
+    "setWindowFrame": [
+     "void setWindowFrame (Number originX, Number originY, Number width, Number height)"
+    ],
+    "takeAtIndex": [
+     "Take takeAtIndex (Number index)"
+    ],
+    "takeWithName": [
+     "Take takeWithName (String takename)"
+    ],
+    "takeCount": [
+     "Number takeCount ()"
+    ]
+   },
+   "properties": []
+  },
+  "FCurve": {
+   "inherits": null,
+   "methods": {
+    "addKey": [
+     "void addKey ( FCurveKey key)"
+    ],
+    "insertKeyAtIndex": [
+     "void insertKeyAtIndex ( FCurveKey key, Number index)"
+    ],
+    "keyAtIndex": [
+     "FCurveKey keyAtIndex (Number index)"
+    ],
+    "keyCount": [
+     "Number keyCount ()"
+    ],
+    "removeAllKeys": [
+     "void removeAllKeys ()"
+    ],
+    "removeKeyAtIndex": [
+     "void removeKeyAtIndex (Number index)"
+    ],
+    "setKeyAtIndex": [
+     "void setKeyAtIndex ( FCurveKey key, Number index)"
+    ],
+    "update": [
+     "void update ()"
+    ],
+    "valueAtTime": [
+     "Number valueAtTime (Number time)"
+    ]
+   },
+   "properties": []
+  },
+  "FCurveKey": {
+   "inherits": null,
+   "methods": {
+    "FCurveKey": [
+     "FCurveKey ()"
+    ]
+   },
+   "properties": []
+  },
+  "File": {
+   "inherits": null,
+   "methods": {
+    "close": [
+     "void close ()"
+    ],
+    "contentOfDir": [
+     "String[] contentOfDir ()"
+    ],
+    "copyTo": [
+     "Boolean copyTo ( String toPath)"
+    ],
+    "directory": [
+     "String directory ()"
+    ],
+    "exist": [
+     "Boolean exist ()"
+    ],
+    "extension": [
+     "String extension ()"
+    ],
+    "getpos": [
+     "int getpos ()"
+    ],
+    "isDir": [
+     "Boolean isDir ()"
+    ],
+    "isOpen": [
+     "Boolean isOpen ()"
+    ],
+    "lastPathComponent": [
+     "String lastPathComponent ();"
+    ],
+    "mkDir": [
+     "Boolean mkDir ()"
+    ],
+    "open": [
+     "void open ( Number mode) void open ( Number mode, Number endian)",
+     "void open ( Number mode) void open ( Number mode, Number endian)"
+    ],
+    "read": [
+     "String read ( Number size)"
+    ],
+    "readFloat": [
+     "Number readFloat ()"
+    ],
+    "readln": [
+     "String readln ()"
+    ],
+    "readShort": [
+     "Number readShort ()"
+    ],
+    "readUInt": [
+     "Number readUInt ()"
+    ],
+    "seek": [
+     "void seek ( Number offset, Number basis)"
+    ],
+    "setpos": [
+     "void setpos (Number pos)"
+    ],
+    "size": [
+     "Number size ()"
+    ],
+    "write": [
+     "void write ( String string)"
+    ],
+    "writeFloat": [
+     "void writeFloat ( Number val)"
+    ],
+    "writeln": [
+     "void writeln ( String string)"
+    ],
+    "writeInt": [
+     "void writeInt ( Number val)"
+    ],
+    "writeShort": [
+     "void writeShort ( Number val)"
+    ],
+    "writeUInt": [
+     "void writeUInt ( Number val)"
+    ]
+   },
+   "properties": []
+  },
+  "Mat3D": {
+   "inherits": null,
+   "methods": {
+    "constructor": [
+     "Mat3D () Mat3D (Number type, Number x, Number y)",
+     "Mat3D () Mat3D (Number type, Number x, Number y)"
+    ],
+    "adjoint": [
+     "Mat3D adjoint ()"
+    ],
+    "concat": [
+     "void concat ( Mat3D mat)"
+    ],
+    "copy": [
+     "Mat3D copy ()"
+    ],
+    "determinant": [
+     "Number determinant ()"
+    ],
+    "inverse": [
+     "Mat3D inverse ()"
+    ],
+    "multiply": [
+     "Vec2D multiply ( Vec2D vec) Vec3D multiply ( Vec3D vec) Mat3D multiply ( Mat3D mat)",
+     "Vec2D multiply ( Vec2D vec) Vec3D multiply ( Vec3D vec) Mat3D multiply ( Mat3D mat)",
+     "Vec2D multiply ( Vec2D vec) Vec3D multiply ( Vec3D vec) Mat3D multiply ( Mat3D mat)"
+    ],
+    "transpose": [
+     "Mat3D transpose ()"
+    ]
+   },
+   "properties": [
+    "m00",
+    "m01",
+    "m02",
+    "m10",
+    "m11",
+    "m12",
+    "m20",
+    "m21",
+    "m22"
+   ]
+  },
+  "Mat4D": {
+   "inherits": null,
+   "methods": {
+    "constructor": [
+     "Mat4D () Mat4D (Number type, Number x, Number y, Number z)",
+     "Mat4D () Mat4D (Number type, Number x, Number y, Number z)"
+    ],
+    "adjoint": [
+     "Mat4D adjoint ()"
+    ],
+    "concat": [
+     "void concat ( Mat4D mat)"
+    ],
+    "copy": [
+     "Mat4D copy ()"
+    ],
+    "determinant": [
+     "Number determinant ()"
+    ],
+    "inverse": [
+     "Mat4D inverse ()"
+    ],
+    "multiply": [
+     "Vec3D multiply ( Vec3D vec) Vec4D multiply ( Vec4D vec) Mat4D multiply ( Mat4D mat)",
+     "Vec3D multiply ( Vec3D vec) Vec4D multiply ( Vec4D vec) Mat4D multiply ( Mat4D mat)",
+     "Vec3D multiply ( Vec3D vec) Vec4D multiply ( Vec4D vec) Mat4D multiply ( Mat4D mat)"
+    ],
+    "transpose": [
+     "Mat4D transpose ()"
+    ]
+   },
+   "properties": []
+  },
+  "Material": {
+   "inherits": "Base",
+   "methods": {
+    "addConnection": [
+     "Boolean addConnection (Number fromID, String fromPara, Number toID, String toPara)"
+    ],
+    "addNodeOfType": [
+     "Node addNodeOfType (String type)"
+    ],
+    "color": [
+     "Vec4D color ()"
+    ],
+    "colorMap": [
+     "String colorMap ()"
+    ],
+    "emission": [
+     "Vec4D emission ()"
+    ],
+    "nodeAtIndex": [
+     "Node nodeAtIndex (Number index)"
+    ],
+    "nodeCount": [
+     "Number nodeCount ()"
+    ],
+    "nodeWithID": [
+     "Node nodeWithID (Number id)"
+    ],
+    "reflection": [
+     "Vec4D reflection ()"
+    ],
+    "removeConnection": [
+     "Boolean removeConnection (Number nodeID, String nodePara)"
+    ],
+    "rib": [
+     "String rib ()"
+    ],
+    "rootNode": [
+     "Node rootNode ()"
+    ],
+    "shininess": [
+     "Number shininess ()"
+    ],
+    "specular": [
+     "Vec4D specular ()"
+    ],
+    "transmission": [
+     "Vec4D transmission ()"
+    ]
+   },
+   "properties": []
+  },
+  "Node": {
+   "inherits": "Base",
+   "methods": {
+    "frame": [
+     "Vec4D frame ()"
+    ],
+    "inputAtIndex": [
+     "Parameter inputAtIndex (Number index)"
+    ],
+    "inputCount": [
+     "Number inputCount ()"
+    ],
+    "inputWithName": [
+     "Parameter inputWithName (String name)"
+    ],
+    "nodeType": [
+     "String nodeType ()"
+    ],
+    "outputAtIndex": [
+     "Parameter outputAtIndex (Number index)"
+    ],
+    "outputCount": [
+     "Number outputCount ()"
+    ],
+    "outputWithName": [
+     "Parameter outputWithName (String name)"
+    ],
+    "setFrame": [
+     "void setFrame ( Vec4f frame)"
+    ],
+    "update": [
+     "void update ()"
+    ]
+   },
+   "properties": []
+  },
+  "OS": {
+   "inherits": null,
+   "methods": {
+    "beep": [
+     "void beep ()"
+    ],
+    "messageBox": [
+     "Number messageBox (String title, String message)"
+    ],
+    "runOpenPanel": [
+     "String runOpenPanel (String filetyp0, String filetyp1, ... )"
+    ],
+    "runSavePanel": [
+     "String runSavePanel (String filetyp)"
+    ],
+    "system": [
+     "Number system (String command)"
+    ]
+   },
+   "properties": []
+  },
+  "Object": {
+   "inherits": "Base",
+   "methods": {
+    "addTagOfType": [
+     "Tag addTagOfType (Number type)"
+    ],
+    "addChildAtIndex": [
+     "Tag addChildAtIndex ( Object child, Number index)"
+    ],
+    "childAtIndex": [
+     "Object childAtIndex (Number index)"
+    ],
+    "childCount": [
+     "Number childCount ()"
+    ],
+    "core": [
+     "PolyCore core () SplineCore core ()",
+     "PolyCore core () SplineCore core ()"
+    ],
+    "isCreatorObj": [
+     "Boolean isCreatorObj ()"
+    ],
+    "materialTags": [
+     "Tag [] materialTags ()"
+    ],
+    "modCore": [
+     "PolyCore modCore () SplineCore modCore ()",
+     "PolyCore modCore () SplineCore modCore ()"
+    ],
+    "obj2WorldMatrix": [
+     "Mat4D obj2WorldMatrix ()"
+    ],
+    "objMatrix": [
+     "Mat4D objMatrix ()"
+    ],
+    "setCreatorObj": [
+     "void setCreatorObj (Boolean val)"
+    ],
+    "removeChild": [
+     "void removeChild ( Object obj)"
+    ],
+    "removeTag": [
+     "void removeTag ( Tag tag)"
+    ],
+    "tagAtIndex": [
+     "Tag tagAtIndex (Number index)"
+    ],
+    "tagCount": [
+     "Number tagCount ()"
+    ],
+    "tagOfType": [
+     "Tag tagOfType (Number type)"
+    ],
+    "update": [
+     "void update ()"
+    ]
+   },
+   "properties": []
+  },
+  "Parameter": {
+   "inherits": null,
+   "methods": {
+    "addTakeNode": [
+     "TakeNode addTakeNode (String takename)"
+    ],
+    "isAnimateable": [
+     "Boolean isAnimateable ()"
+    ],
+    "connected": [
+     "Boolean connected ()"
+    ],
+    "connectedWithID": [
+     "Number connectedWithID ()"
+    ],
+    "connectedWithParameter": [
+     "String connectedWithParameter ()"
+    ],
+    "name": [
+     "String name ()"
+    ],
+    "takeNodeAtIndex": [
+     "TakeNode takeNodeAtIndex (Number index)"
+    ],
+    "takeNodeCount": [
+     "Number takeNodeCount ()"
+    ],
+    "takeNodeWithName": [
+     "TakeNode takeNodeWithName (String takename)"
+    ],
+    "type": [
+     "Number type ()"
+    ]
+   },
+   "properties": []
+  },
+  "Particle": {
+   "inherits": null,
+   "methods": {
+    "getBirth": [
+     "Number getBirth ()"
+    ],
+    "getColor": [
+     "Vec4D getColor ()"
+    ],
+    "getDeath": [
+     "Number getDeath ()",
+     "void getDeath (Number death)"
+    ],
+    "getIndex": [
+     "Number getIndex ()"
+    ],
+    "getPosition": [
+     "Vec3D getPosition ()"
+    ],
+    "getPositionSpeed": [
+     "Vec3D getPositionSpeed ()"
+    ],
+    "getRotation": [
+     "Vec3D getRotation ()"
+    ],
+    "getRotationSpeed": [
+     "Vec3D getRotationSpeed ()"
+    ],
+    "getScale": [
+     "Vec3D getScale ()"
+    ],
+    "getScaleSpeed": [
+     "Vec3D getScaleSpeed ()"
+    ],
+    "getRand": [
+     "Vec3D getRand ()"
+    ],
+    "getUVW": [
+     "Vec3D getUVW ()"
+    ],
+    "getWeight": [
+     "Number getWeight ()"
+    ],
+    "getVisible": [
+     "Boolean getVisible ()"
+    ],
+    "setBirth": [
+     "void setBirth (Number birth)"
+    ],
+    "setColor": [
+     "void setColor ( Vec4D rgba) void setColor (Number red,Number green,Number blue,Number alpha)",
+     "void setColor ( Vec4D rgba) void setColor (Number red,Number green,Number blue,Number alpha)"
+    ],
+    "setIndex": [
+     "void setIndex (Number index)"
+    ],
+    "setPosition": [
+     "void setPosition ( Vec3D vec) void setPosition (Number x, Number y, Number z)",
+     "void setPosition ( Vec3D vec) void setPosition (Number x, Number y, Number z)"
+    ],
+    "setPositionSpeed": [
+     "void setPositionSpeed ( Vec3D vec) void setPositionSpeed (Number x, Number y, Number z)",
+     "void setPositionSpeed ( Vec3D vec) void setPositionSpeed (Number x, Number y, Number z)"
+    ],
+    "setRotation": [
+     "void setRotation ( Vec3D vec) void setRotation (Number x, Number y, Number z)",
+     "void setRotation ( Vec3D vec) void setRotation (Number x, Number y, Number z)"
+    ],
+    "setRotationSpeed": [
+     "void setRotationSpeed ( Vec3D vec) void setRotationSpeed (Number x, Number y, Number z)",
+     "void setRotationSpeed ( Vec3D vec) void setRotationSpeed (Number x, Number y, Number z)"
+    ],
+    "setScale": [
+     "void setScale ( Vec3D vec) void setScale (Number x, Number y, Number z)",
+     "void setScale ( Vec3D vec) void setScale (Number x, Number y, Number z)"
+    ],
+    "setScaleSpeed": [
+     "void setScaleSpeed ( Vec3D vec) void setScaleSpeed (Number x, Number y, Number z)",
+     "void setScaleSpeed ( Vec3D vec) void setScaleSpeed (Number x, Number y, Number z)"
+    ],
+    "setRand": [
+     "void setRand ( Vec3D vec) void setRand (Number x, Number y, Number z)",
+     "void setRand ( Vec3D vec) void setRand (Number x, Number y, Number z)"
+    ],
+    "setUVW": [
+     "void setUVW ( Vec3D vec) void setUVW (Number u, Number v, Number z)",
+     "void setUVW ( Vec3D vec) void setUVW (Number u, Number v, Number z)"
+    ],
+    "setWeight": [
+     "void setWeight (Number weight)"
+    ],
+    "setVisible": [
+     "Number setVisible (Boolean visible)"
+    ]
+   },
+   "properties": []
+  },
+  "ParticleCore": {
+   "inherits": null,
+   "methods": {
+    "addParticle": [
+     "Particle addParticle ()"
+    ],
+    "particleCount": [
+     "Number particleCount ()"
+    ],
+    "particleAtIndex": [
+     "Particle particleAtIndex (Number index)"
+    ],
+    "removeParticleAtIndex": [
+     "void removeParticleAtIndex (Number index)"
+    ],
+    "removeAllParticles": [
+     "void removeAllParticles ()"
+    ]
+   },
+   "properties": []
+  },
+  "PolyCore": {
+   "inherits": null,
+   "methods": {
+    "addIndexPolygon": [
+     "Number addIndexPolygon (Number size]) Number addIndexPolygon (Number size, Number vindex[]) Number addIndexPolygon (Number size, Number vindex[], Vec2D uv[]) Number addIndexPolygon (Number size, Number vindex[], Vec4D uv[])",
+     "Number addIndexPolygon (Number size]) Number addIndexPolygon (Number size, Number vindex[]) Number addIndexPolygon (Number size, Number vindex[], Vec2D uv[]) Number addIndexPolygon (Number size, Number vindex[], Vec4D uv[])",
+     "Number addIndexPolygon (Number size]) Number addIndexPolygon (Number size, Number vindex[]) Number addIndexPolygon (Number size, Number vindex[], Vec2D uv[]) Number addIndexPolygon (Number size, Number vindex[], Vec4D uv[])",
+     "Number addIndexPolygon (Number size]) Number addIndexPolygon (Number size, Number vindex[]) Number addIndexPolygon (Number size, Number vindex[], Vec2D uv[]) Number addIndexPolygon (Number size, Number vindex[], Vec4D uv[])"
+    ],
+    "addPolygon": [
+     "Number addPolygon (Number size) Number addPolygon (Number size, bool meshed, Vec3D p[]) Number addPolygon (Number size, bool meshed, Vec3D p[], Vec2D uv[])",
+     "Number addPolygon (Number size) Number addPolygon (Number size, bool meshed, Vec3D p[]) Number addPolygon (Number size, bool meshed, Vec3D p[], Vec2D uv[])",
+     "Number addPolygon (Number size) Number addPolygon (Number size, bool meshed, Vec3D p[]) Number addPolygon (Number size, bool meshed, Vec3D p[], Vec2D uv[])"
+    ],
+    "addVertex": [
+     "Number addVertex (Boolean meshed, Vec3D vert)"
+    ],
+    "buildVertexBSP": [
+     "void buildVertexBSP ( Vec3D bmin, Vec3D bmax)"
+    ],
+    "deletePolygon": [
+     "void deletePolygon (Number pindex)"
+    ],
+    "deleteVertex": [
+     "void deleteVertex (Number vindex)"
+    ],
+    "destroyVertexBSP": [
+     "void destroyVertexBSP ()"
+    ],
+    "cornerCount": [
+     "Number cornerCount ()"
+    ],
+    "edgeSelection": [
+     "Boolean edgeSelection (Number pindex, Number eindex, Number mask)"
+    ],
+    "flipWinding": [
+     "void flipWinding (Number pindex)"
+    ],
+    "materialTagIndex": [
+     "Number materialTagIndex (Number pindex )"
+    ],
+    "mergeVertices": [
+     "void mergeVertices (Number tolerance)"
+    ],
+    "normal": [
+     "Vec3D normal (Number pindex) Vec3D normal (Number pindex, Number cindex)",
+     "Vec3D normal (Number pindex) Vec3D normal (Number pindex, Number cindex)"
+    ],
+    "polygonCount": [
+     "Number polygonCount ()"
+    ],
+    "polygonSelection": [
+     "Boolean polygonSelection (Number pindex)"
+    ],
+    "polygonSize": [
+     "Number polygonSize (Number pindex)"
+    ],
+    "setActivePolygonSelection": [
+     "void setActivePolygonSelection (Number polysel)"
+    ],
+    "setEdgeSelection": [
+     "void setEdgeSelection (Number pindex, Number eindex, Number mask, Boolean val)"
+    ],
+    "setPolygonSelection": [
+     "void setPolygonSelection (Number pindex,Boolean val)"
+    ],
+    "setUVCoord": [
+     "void setUVCoord (Number pindex, Number cindex, Vec2D uv) void setUVCoord (Number pindex, Number cindex, Vec4D uv)",
+     "void setUVCoord (Number pindex, Number cindex, Vec2D uv) void setUVCoord (Number pindex, Number cindex, Vec4D uv)"
+    ],
+    "setVertex": [
+     "void setVertex (iNumbernt vindex, Vec3D vert)"
+    ],
+    "setVertexSelection": [
+     "void setVertexSelection (Number vindex, Boolean val)"
+    ],
+    "triangle": [
+     "Number[3] triangle (Number pindex, Number tindex)"
+    ],
+    "triangleCount": [
+     "Number triangleCount ()"
+    ],
+    "uvCoord": [
+     "Vec4D uvCoord (Number pindex, Number cindex)"
+    ],
+    "vertexCount": [
+     "Number vertexCount ()"
+    ],
+    "vertex": [
+     "Vec3D vertex (Number vindex)"
+    ],
+    "vertexIndex": [
+     "Number vertexIndex (Number pindex, Number cindex)"
+    ],
+    "vertexSelection": [
+     "Boolean vertexSelection (Number vindex)"
+    ]
+   },
+   "properties": []
+  },
+  "SplineCore": {
+   "inherits": null,
+   "methods": {
+    "cache": [
+     "Vec3D [] cache (Number pindex)"
+    ],
+    "close": [
+     "void close ()"
+    ],
+    "currentPoint": [
+     "Vec3D currentPoint ()"
+    ],
+    "curve": [
+     "void curve ( Vec3D cp1, Vec3D cp2, Vec3D to)"
+    ],
+    "line": [
+     "void line ( Vec3D to)"
+    ],
+    "move": [
+     "void move ( Vec3D to)"
+    ],
+    "pathCount": [
+     "Number pathCount ()"
+    ]
+   },
+   "properties": []
+  },
+  "Tag": {
+   "inherits": "Base",
+   "methods": {
+    "addCluster": [
+     "Cluster addCluster ()"
+    ],
+    "clusterAtIndex": [
+     "Cluster clusterAtIndex (Number index)"
+    ],
+    "clusterCount": [
+     "Number clusterCount ()"
+    ],
+    "linkedToMaterial": [
+     "Number linkedToMaterial ()"
+    ],
+    "removeClusterAtIndex": [
+     "void removeClusterAtIndex (Number index)"
+    ],
+    "tag2WorldMatrix": [
+     "Mat4D tag2WorldMatrix ()"
+    ],
+    "update": [
+     "void update ()"
+    ]
+   },
+   "properties": []
+  },
+  "Take": {
+   "inherits": null,
+   "methods": {},
+   "properties": [
+    "length",
+    "previewFrom",
+    "previewTo",
+    "name"
+   ]
+  },
+  "TakeNode": {
+   "inherits": null,
+   "methods": {
+    "fCurveAtIndex": [
+     "FCurve fCurveAtIndex(Number index)"
+    ],
+    "fCurveCount": [
+     "Number fCurveCount()"
+    ],
+    "name": [
+     "String name()"
+    ],
+    "totalKeyCount": [
+     "Number totalKeyCount()"
+    ]
+   },
+   "properties": []
+  },
+  "Texture": {
+   "inherits": null,
+   "methods": {
+    "pixel": [
+     "Vec4D pixel (Number x, Number y)"
+    ],
+    "sample": [
+     "Vec4D sample (Number s, Number t)"
+    ]
+   },
+   "properties": [
+    "width",
+    "height",
+    "filename"
+   ]
+  },
+  "Vec2D": {
+   "inherits": null,
+   "methods": {
+    "constructor": [
+     "Vec2D ( Number x, Number y)"
+    ],
+    "add": [
+     "Vec2D add ( Vec2D a)"
+    ],
+    "isEqual": [
+     "BOOL isEqual ( Vec2D a)"
+    ],
+    "inverse": [
+     "Vec2D inverse ()"
+    ],
+    "multiply": [
+     "Vec2D multiply (Number a) Vec2D multiply ( Vec2D a)",
+     "Vec2D multiply (Number a) Vec2D multiply ( Vec2D a)"
+    ],
+    "norm": [
+     "Number norm ()"
+    ],
+    "copy": [
+     "Vec2D copy ()"
+    ],
+    "set": [
+     "void set ( Number x, Number y)"
+    ],
+    "sub": [
+     "Vec2D sub ( Vec2D )"
+    ]
+   },
+   "properties": []
+  },
+  "Vec3D": {
+   "inherits": null,
+   "methods": {
+    "constructor": [
+     "Vec3D (Number x, Number y, Number z)"
+    ],
+    "add": [
+     "Vec3D add ( Vec3D a)"
+    ],
+    "cross": [
+     "Vec3D cross ( Vec3D a)"
+    ],
+    "convertEuler": [
+     "Vec3D convertEuler (Number current_order, Number new_order) Vec3D convertEuler (Number current_order, Number new_order, Vec3D tip)",
+     "Vec3D convertEuler (Number current_order, Number new_order) Vec3D convertEuler (Number current_order, Number new_order, Vec3D tip)"
+    ],
+    "dot": [
+     "Number dot ( Vec3D a)"
+    ],
+    "isEqual": [
+     "BOOL isEqual ( Vec3D a)"
+    ],
+    "inverse": [
+     "Vec3D inverse ()"
+    ],
+    "multiply": [
+     "Vec3D multiply (Number a) Vec3D multiply ( Vec3D a)",
+     "Vec3D multiply (Number a) Vec3D multiply ( Vec3D a)"
+    ],
+    "norm": [
+     "Number norm ()"
+    ],
+    "copy": [
+     "Vec3D copy ()"
+    ],
+    "set": [
+     "void set (Number x, Number y, Number z)"
+    ],
+    "sub": [
+     "Vec3D sub ( Vec3D )"
+    ]
+   },
+   "properties": []
+  },
+  "Vec4D": {
+   "inherits": null,
+   "methods": {
+    "constructor": [
+     "Vec4D ( Number x, Number y, Number z, Number w)"
+    ],
+    "add": [
+     "Vec4D add ( Vec4D a)"
+    ],
+    "isEqual": [
+     "BOOL isEqual ( Vec4D a)"
+    ],
+    "inverse": [
+     "Vec4D inverse ()"
+    ],
+    "multiply": [
+     "Vec4D multiply (Number a) Vec4D multiply ( Vec4D a)",
+     "Vec4D multiply (Number a) Vec4D multiply ( Vec4D a)"
+    ],
+    "norm": [
+     "Number norm ()"
+    ],
+    "copy": [
+     "Vec4D copy ()"
+    ],
+    "set": [
+     "void set (Number r, Number g, Number b, Number a)"
+    ],
+    "sub": [
+     "Vec4D sub ( Vec4D )"
+    ]
+   },
+   "properties": [
+    "x",
+    "y",
+    "z",
+    "w"
+   ]
+  }
+ },
+ "constants": [
+  "ANCHORTAG",
+  "AREALIGHT",
+  "ARRAYMOD",
+  "ATTRACTIONFORCE",
+  "BAKETAG",
+  "BALL",
+  "BENDMOD",
+  "BLUEPRINT",
+  "BOOLEAN",
+  "BOOLEANMOD",
+  "BOOL_PARAMETER",
+  "BOX",
+  "BUILDMOD",
+  "BULGEMOD",
+  "CAMERA",
+  "CAPSULE",
+  "CHAIN",
+  "CHEETAH",
+  "CIRCLE",
+  "COG",
+  "CONE",
+  "CRUMPLEMOD",
+  "CYLINDER",
+  "DEFLECTORFORCE",
+  "DISC",
+  "DISPLACEMENTMOD",
+  "DISTANTLIGHT",
+  "DRAGFORCE",
+  "EDGE_MODE",
+  "EFFECTORFAMILY",
+  "EMPTY_SELECTION",
+  "EXTRUDE",
+  "FALCON",
+  "FLOAT_ARRAY_PARAMETER",
+  "FLOAT_PARAMETER",
+  "FLOWER",
+  "FOLDER",
+  "FORCEFAMILY",
+  "FRACTAL",
+  "GRADIENT_PARAMETER",
+  "GRAVITYFORCE",
+  "HELIX",
+  "IKCONSTRAINTTAG",
+  "IKHANDLETAG",
+  "INT_PARAMETER",
+  "ISOSURFACE",
+  "LATHE",
+  "LIGHTFAMILY",
+  "LINE",
+  "LINK_PARAMETER",
+  "LOADERFAMILY",
+  "MATERIAL",
+  "MATERIALFAMILY",
+  "METABALLTAG",
+  "MODETAG",
+  "MODIFIED_GEOMETRY",
+  "MODIFIED_MODI",
+  "MODIFIED_NOTHING",
+  "MODIFIED_PARAMETER",
+  "MODIFIED_PARTICLE",
+  "MODIFIED_TIME",
+  "MODIFIED_TRANSFORM",
+  "MODIFIERFAMILY",
+  "MORPHTAG",
+  "NEDGE",
+  "NGONFAMILY",
+  "NODEFAMILY",
+  "OBJECT_MODE",
+  "ORIENTATIONEFF",
+  "ORIENTCONSTRAINTTAG",
+  "OTHERFAMILY",
+  "PARENTCONSTRAINTTAG",
+  "PARTICLE",
+  "PARTICLEARRAY",
+  "PARTICLEEMITTER",
+  "PARTICLEFAMILY",
+  "PARTICLEMESH",
+  "PARTICLESCRIPT",
+  "PARTICLESPLINE",
+  "PARTICLETAG",
+  "PLANE",
+  "POINTCONSTRAINTTAG",
+  "POINTLIGHT",
+  "POINT_MODE",
+  "POLYGONOBJ",
+  "POLYHEDRA",
+  "POLYPLANE",
+  "POLY_MODE",
+  "POSETAG",
+  "PRIMARY_SELECTION",
+  "PROPWINTAG",
+  "RADIALFORCE",
+  "RECT",
+  "RELIEF",
+  "RIGIDBODYTAG",
+  "RINGMOD",
+  "ROPETAG",
+  "ROT_HPB",
+  "ROT_XYZ",
+  "ROT_XZY",
+  "ROT_YXZ",
+  "ROT_YZX",
+  "ROT_ZXY",
+  "ROT_ZYX",
+  "SCRIPTPOLY",
+  "SCRIPTSPLINE",
+  "SCRIPTTAG",
+  "SECONDARY_SELECTION",
+  "SETTINGFAMILY",
+  "SHADERTAG",
+  "SHEARMOD",
+  "SHELLMOD",
+  "SKELETONTAG",
+  "SMOOTHMOD",
+  "SOFTBODYTAG",
+  "SPHERIFYMOD",
+  "SPLINE",
+  "SPLINEFAMILY",
+  "SPLINEIKTAG",
+  "SPOTLIGHT",
+  "STAIR",
+  "STAR",
+  "STRING_PARAMETER",
+  "SUBDIV",
+  "SWEEP",
+  "SYMMETRY",
+  "SYMMETRYMOD",
+  "TAGFAMILY",
+  "TAPERMOD",
+  "TEXT",
+  "TEXTURE_PARAMETER",
+  "TORUS",
+  "TRANSFORMMOD",
+  "TUBE",
+  "TWISTMOD",
+  "UVTAG",
+  "VEC2D_PARAMETER",
+  "VEC3D_PARAMETER",
+  "VEC4D_PARAMETER",
+  "WARPMOD",
+  "WINDFORCE"
+ ],
+ "globals": [
+  "clearConsole",
+  "print",
+  "version"
+ ]
+}
