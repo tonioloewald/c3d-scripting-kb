@@ -110,6 +110,30 @@ function performExpression(tag) {
 }
 ```
 
+### A3b. Additive expression tag (wobble, jitter, offset), 7.0+ [VERIFY]
+
+The trap is reading back the value you wrote last frame, which makes the effect build up. Take the base from the keyframes, or from a parameter stored on the tag. A full version, with automatic capture and a Capture button, is in [Wobble.js](../examples/generated/Wobble.js).
+
+```js
+function buildUI(tag) {
+    tag.addParameterInt("priority", 10, 0, 1000, true, true);
+    tag.addParameterFloat("amplitude", 10, 0, 180, true, true);
+    tag.addParameterFloat("frequency", 1, 0, 100, true, true);
+    tag.addParameterVec3D("base rotation", new Vec3D(0,0,0), -100000, 100000, false, true);
+}
+function performExpression(tag) {
+    var owner = tag.owner(); if (owner == null) return;
+    var doc = tag.document(), t = doc.animPosition();          // seconds
+    var p = owner.parameterWithName("rotation");
+    var node = p ? p.takeNodeWithName(doc.currentTake().name) : null;
+    var base = (node && node.totalKeyCount() > 0)
+        ? owner.getParameter("rotation", t)                     // keyed: F-curve value [VERIFY]
+        : tag.getParameter("base rotation");                    // unkeyed: stored base
+    var d = tag.getParameter("amplitude") * Math.sin(2*Math.PI*tag.getParameter("frequency")*t);
+    owner.setParameter("rotation", new Vec3D(base.x + d, base.y, base.z), false);  // h += d; never omit false
+}
+```
+
 ### A4. Polygonobj (`Scripts/Polygonobj/`)
 
 Sources: [ex: GrapherUV.js](../examples/official/Polygonobj/GrapherUV.js), [ex: Menger.js](../examples/official/Polygonobj/Menger.js), [#574](https://www.cheetah3d.com/forum/index.php?threads/574/), [#1939](https://www.cheetah3d.com/forum/index.php?threads/1939/), [#1294](https://www.cheetah3d.com/forum/index.php?threads/1294/).
@@ -589,5 +613,29 @@ function main(doc) {
         describe(doc, tag, "tag " + i);
         if (tag.type() == SHADERTAG) describe(doc, doc.materialAtIndex(tag.linkedToMaterial()), "material");
     }
+}
+```
+
+### B12. Tool that edits the children of the selection, with undo [VERIFY merge behaviour]
+
+See [Distribute Selected.js](../examples/generated/Distribute%20Selected.js) for the full script.
+
+```js
+function buildUI(tool) {
+    tool.addParameterSelector("axis", ["X","Y","Z"], false, false);
+    tool.addParameterButton("go", "Apply", "apply");
+}
+function apply(tool) {
+    var doc = tool.document(), parent = doc.selectedObject();
+    if (parent == null || parent.owner() == null) { OS.messageBox("Tool", "Select a parent object."); return; }
+    doc.retainRedrawLock();
+    try {
+        for (var i = 0; i < parent.childCount(); i++) {
+            var c = parent.childAtIndex(i), pos = c.getParameter("position");
+            if (c.recordParametersForUndo) c.recordParametersForUndo();   // 6.0+
+            c.setParameter("position", new Vec3D(pos.x, pos.y, pos.z));   // ...modified
+            c.update();
+        }
+    } finally { doc.releaseRedrawLock(); doc.redrawAll(); }
 }
 ```

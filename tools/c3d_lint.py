@@ -15,8 +15,7 @@ CONSTANTS = set(API['constants'])
 for _f in list((ROOT / 'reference/api').glob('*.md')) + list((ROOT / 'examples/official').rglob('*.js')):
     CONSTANTS |= set(re.findall(r'\b([A-Z][A-Z0-9_]{3,})\b', _f.read_text(errors='replace')))
 # Forum-confirmed calls missing from the 8.1.1 reference (see knowledge/gotchas.md)
-FORUM_KNOWN = {'id', 'animationTime', 'recordParametersForUndo', 'performExpression', 'scriptPath',
-               'currentRenderer', 'rendererAtIndex', 'rootNode', 'selectedObjects'}
+FORUM_KNOWN = {'id', 'animationTime'}
 JS_BUILTINS = set('''push pop shift unshift slice splice concat join split indexOf lastIndexOf toString
 toFixed toPrecision replace match substr substring charAt charCodeAt fromCharCode toLowerCase toUpperCase
 sort reverse map filter forEach reduce some every apply call bind floor ceil round sqrt sin cos tan atan
@@ -114,13 +113,23 @@ def lint(path, declared=None):
         if name != 'buildUI' and re.search(r'\.addParameter\w+\s*\(', body):
             add('WARN', src.find(body), f'addParameter* called in {name}(); only valid inside buildUI().')
     # setParameter inside buildObject / performExpression without false
+    def reach(name, seen):
+        if name in seen or name not in fns: return seen
+        seen.add(name)
+        for callee in re.findall(r'(?<![\w.])(\w+)\s*\(', fns[name]):
+            reach(callee, seen)
+        return seen
     for hook in ('buildObject', 'performExpression'):
-        body = fns.get(hook)
-        if body:
+        for fn in sorted(reach(hook, set())):
+          body = fns.get(fn)
+          where = hook if fn == hook else f'{fn}() (called from {hook})'
+          if body:
             off = src.find(body)
             for pos, args in calls_with_args(body, 'setParameter'):
                 if len(args) < 3 or args[2].strip() != 'false':
-                    add('ERROR', off + pos, f'setParameter in {hook}() without third arg false: infinite rebuild loop (#574, #8739).')
+                    add('ERROR', off + pos, f'setParameter in {where} without third arg false: infinite rebuild loop (#574, #8739).')
+            if hook == 'performExpression' and re.search(r'recordParametersForUndo|recordGeometryForUndo', body):
+                add('WARN', off, f'Undo recording inside {where}: runs every evaluation; undo is documented for Tool scripts.')
             if hook == 'buildObject' and re.search(r'Math\.random\s*\(', body):
                 add('WARN', off, 'Math.random() in buildObject(): geometry changes on every rebuild. Use a PRNG seeded from a parameter (patterns.md B10).')
     # constructors without new
@@ -150,6 +159,8 @@ def lint(path, declared=None):
     for m in re.finditer(r'\.\s*([a-zA-Z_]\w*)\s*\(', src):
         n = m.group(1)
         if n in DOC_METHODS or n in JS_BUILTINS or n in defined: continue
+        if n == 'animationTime':
+            continue  # undocumented, but used by the bundled 8.1.1 CircleExpression.js
         if n in FORUM_KNOWN:
             add('INFO', m.start(), f'.{n}() is undocumented in 8.1.1 but used on the forum; verify in app.')
         else:
@@ -177,7 +188,7 @@ def main(argv):
         for lvl, ln, msg in issues:
             print(f'  {lvl:5} L{ln:<4} {msg}')
             bad += lvl == 'ERROR'
-        if not issues: print('  ok')
+        if not issues: print('  no static issues found (not run in Cheetah3D)')
     return 1 if bad else 0
 
 

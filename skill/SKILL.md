@@ -13,8 +13,11 @@ knowledge is in forum threads from 2006 to 2025. All of it has been collected in
 ## 0. Get the knowledge base
 
 ```bash
-git clone --depth 1 https://github.com/tonioloewald/c3d-scripting-kb /tmp/c3dkb 2>/dev/null || git -C /tmp/c3dkb pull -q
+KB=${KB:-/tmp/c3dkb}
+git clone --depth 1 https://github.com/tonioloewald/c3d-scripting-kb "$KB" 2>/dev/null || git -C "$KB" pull -q
 ```
+
+Paths below are relative to `$KB`.
 
 Key files (read what the task needs, not everything):
 
@@ -34,30 +37,36 @@ Key files (read what the task needs, not everything):
 
 The folder decides the type. A script in the wrong folder fails silently, throws misleading errors, or crashes the app.
 
-| Type / folder | Entry points | Use for |
-|---|---|---|
-| `Macro` | `main(doc)` | One-shot actions: no UI, runs immediately |
-| `Tool` | `buildUI(tool)` + button callbacks `fn(tool)` | Actions with parameters, shown in the **Tool** tab |
-| `Tag` | `buildUI(tag)` + `performExpression(tag)` (7.0+, undocumented) | Per-frame expressions and constraints that drive the owner |
-| `Polygonobj` | `buildUI(obj)` + `buildObject(obj)` → fill `obj.core()` (PolyCore) | Procedural meshes |
-| `Splineobj` | `buildUI(obj)` + `buildObject(obj)` → `core.move/line/curve/close` | Procedural splines |
-| `Particle` | `buildUI(obj)` + `buildObject(obj)` → `core.addParticle()` | Custom particle layouts (children get instanced) |
+| Type / folder | Entry points | Use for | How the user runs it |
+|---|---|---|---|
+| `Macro` | `main(doc)` | One-shot actions: no UI, runs immediately | Tools › Script › Macro › name |
+| `Tool` | `buildUI(tool)` + button callbacks `fn(tool)` | Actions with parameters | Tools › Script › Tool › name; the UI is in the **Tool** tab |
+| `Tag` | `buildUI(tag)` + `performExpression(tag)` (7.0+, undocumented; see `examples/official/Tag/CircleExpression.js`) | Per-frame expressions and constraints that drive the owner | Select the object, then Tools › Script › Tag › name |
+| `Polygonobj` | `buildUI(obj)` + `buildObject(obj)` → fill `obj.core()` (PolyCore) | Procedural meshes | Tools › Script › Polygonobj › name creates the object; its parameters are in the object's properties |
+| `Splineobj` | `buildUI(obj)` + `buildObject(obj)` → `core.move/line/curve/close` | Procedural splines | Same as Polygonobj |
+| `Particle` | `buildUI(obj)` + `buildObject(obj)` → `core.addParticle()` | Custom particle layouts (children get instanced) | Same as Polygonobj |
+
+An optional first line, `//C3D_VERSION_REQUIREMENT 7.0.0`, marks the minimum version, as the bundled examples do.
 
 ## 2. Hard rules (each one broke real scripts)
 
 1. **Pass every argument to `addParameter*`**, including the trailing `animate, build` booleans: Bool/Float/Int/Color/Vec take 6 arguments, Selector 4, String/Texture 3. Short forms have crashed the app. Only call them in `buildUI()`.
-2. **Never call `setParameter` inside `buildObject()` or `performExpression()` without the third argument `false`.** Without it you get an infinite rebuild loop, sometimes only at render time. Never write the script object's own parameters from `buildObject`.
+2. **Inside `buildObject()` or `performExpression()`, and in any helper they call, every `setParameter` must pass `false` as its third argument.** Without it you get an infinite rebuild loop, sometimes only at render time. Never write the script object's own parameters from `buildObject`.
+   - **Expressions must not read back what they write.** Reading `rotation` and writing `rotation + offset` makes the offset build up each frame. Take the base from `getParameter(name, t)` on keyframes or from a parameter stored on the tag (patterns A3b).
 3. **Always use `new Vec3D(...)`, `new Vec2D(...)`, `new File(...)` and so on.** Calling them without `new` has crashed the app. Do not extend native prototypes (`Vec3D.prototype.x = ...`).
 4. **`core.vertex(i)` returns a copy.** Write changes back with `core.setVertex(i, v)`, then call `obj.update()`.
 5. **`doc.selectedObject()` returns the hidden root, not null, when nothing is selected.** Test `obj.owner() == null`.
 6. **Do not name a parameter `type`**, or any built-in name (`name`, `position`, `rotation`, `scale`, `seed`, ...). A parameter's name is also its UI label and is case-sensitive.
 7. **Parameter names in scripts differ from UI labels.** Discover them with `obj.parameterInfo()` (the bundled Macro *Parameter Info.js* prints them) instead of guessing.
-8. **Use a seeded PRNG in `buildObject`, not `Math.random()`.** Otherwise geometry changes on every rebuild. The `seed` parameter exists on particle objects; elsewhere add an Int parameter yourself.
+8. **Use a seeded PRNG in `buildObject`, not `Math.random()`** (patterns B10). Otherwise geometry changes on every rebuild. Particle objects already have a `seed` parameter; elsewhere add an Int parameter such as `"random seed"`. Never name it `seed` on a non-particle object without checking `parameterInfo()`.
 9. **Animation time is in seconds, not frames** (`doc.animPosition()`, `setAnimPosition(sec)`, `FCurveKey.time`).
 10. **Lights:** since 5.x a light is one type, configured by the `lightType` parameter. Do not rely on `SPOTLIGHT`, `POINTLIGHT` and similar constants until they have been verified in 8.x (see gotchas).
 11. **`print()` takes strings**, so write `print("" + x)`. There is no `require`; to share code, use the `File` + indirect-eval pattern in patterns.md B8.
 12. **Pass `uvCoord()` results (Vec4D) to `addIndexPolygon` carefully.** Older builds needed `new Vec2D(uv.x, uv.y)` (gotchas §4).
-13. **Free a redraw lock if you take one.** Use `doc.retainRedrawLock()` with `releaseRedrawLock()` in `finally`, then call `doc.redrawAll()`.
+13. **Facing and rotations.**
+    - Which corner order faces outward is unconfirmed. For closed shapes, check face normals against the centre and call `flipWinding` (gotchas §4).
+    - `rotation` is (heading, pitch, bank) in degrees, and heading turns around Y.
+14. **Free a redraw lock if you take one.** Use `doc.retainRedrawLock()` with `releaseRedrawLock()` in `finally`, then call `doc.redrawAll()`.
 
 When the docs and the forum disagree, prefer, in order: the 8.1.1 bundled examples, forum reports from 7.x/8.x, the 8.1.1 docs, then older forum reports. Say which one you relied on when it matters.
 
@@ -71,8 +80,8 @@ When the docs and the forum disagree, prefer, in order: the 8.1.1 bundled exampl
    - Write ES5: `var`, function declarations, no arrow functions, `let`/`const`, classes, template literals or modules. JavaScriptCore in older versions rejected newer syntax, and ES5 is the safe default.
    - Give every parameter a sensible default and range.
    - Report problems with `OS.messageBox` and `print`; do not fail silently.
-5. **Lint.** Run `python3 /tmp/c3dkb/tools/c3d_lint.py --type <Type> script.js`. Fix every ERROR. Fix each WARN or explain why it is fine.
-6. **Deliver.** Give the file named `<Name>.js` and its install path (`~/Library/Application Support/Cheetah3D/Scripts/<Type>/`). Tell the user to choose **Update Scripts Menu** at the bottom of the Script menu, or to relaunch. Say how to run the script and where its UI appears; for a Tool, that is the Tool tab.
+5. **Lint.** Run `python3 $KB/tools/c3d_lint.py --type <Type> script.js`. Fix every ERROR. Fix each WARN or explain why it is fine. Passing lint does **not** mean the script works. Tell the user the script is untested until it has run in Cheetah3D, and list any `UNVERIFIED` lines.
+6. **Deliver.** Give the file named `<Name>.js` and its install path (`~/Library/Application Support/Cheetah3D/Scripts/<Type>/`). Tell the user to relaunch Cheetah3D, or use **Update Scripts Menu** at the bottom of the Script menu if their version has it. Say how to run the script and where its UI appears; for a Tool, that is the Tool tab.
    - If the session can reach the user's Mac, offer to install the file there.
    - If computer use is available, offer to run it in Cheetah3D and read the console (add a Console panel by right-clicking any panel header).
 7. **Debug reported failures in this order:** wrong folder, then a missing argument in an `addParameter*` call, then a wrong parameter name (introspect it), then a rebuild loop, then API drift between versions (gotchas §11, "Version history").
@@ -125,6 +134,6 @@ Details and signatures are in `reference/api/`.
 
 Do not invent API. Options, in order:
 
-1. Grep the knowledge base (`grep -rn "methodName" /tmp/c3dkb/{knowledge,reference,examples,scripts/forum}`).
+1. Grep the knowledge base (`grep -rn "methodName" $KB/{knowledge,reference,examples,scripts/forum}`).
 2. Write an introspection macro (patterns.md B11) for the user to run, and ask for the console output.
 3. Mark the call `// UNVERIFIED` and tell the user exactly what to check.

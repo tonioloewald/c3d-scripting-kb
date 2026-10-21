@@ -276,7 +276,7 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -370,10 +370,10 @@
     "lint": {
      "errors": [],
      "warnings": [
-      "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
+      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
+      "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
@@ -414,9 +414,9 @@
     "lint": {
      "errors": [],
      "warnings": [
+      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
@@ -1842,7 +1842,7 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -2298,10 +2298,10 @@
      "errors": [],
      "warnings": [
       ".mkdir() is not in the 8.1.1 API reference.",
-      "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x."
+      "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
+      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
+      "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x."
      ]
     }
    }
@@ -2662,7 +2662,9 @@
     "unknown_calls": [],
     "lint": {
      "errors": [],
-     "warnings": []
+     "warnings": [
+      "Math.random() in buildObject(): geometry changes on every rebuild. Use a PRNG seeded from a parameter (patterns.md B10)."
+     ]
     }
    }
   ],
@@ -5028,8 +5030,8 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739).",
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739).",
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": [
       "Extending Vec3D.prototype breaks or is ignored on native classes (#1298, #10400)."
@@ -6399,9 +6401,9 @@
     "lint": {
      "errors": [],
      "warnings": [
+      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
@@ -6488,7 +6490,9 @@
     ],
     "lint": {
      "errors": [],
-     "warnings": []
+     "warnings": [
+      "Math.random() in buildObject(): geometry changes on every rebuild. Use a PRNG seeded from a parameter (patterns.md B10)."
+     ]
     }
    },
    {
@@ -7486,7 +7490,9 @@
     "unknown_calls": [],
     "lint": {
      "errors": [],
-     "warnings": []
+     "warnings": [
+      "Math.random() in buildObject(): geometry changes on every rebuild. Use a PRNG seeded from a parameter (patterns.md B10)."
+     ]
     }
    },
    {
@@ -7978,10 +7984,10 @@
      "errors": [],
      "warnings": [
       ".mkdir() is not in the 8.1.1 API reference.",
-      "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
       "DISTANTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
-      "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x."
+      "POINTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
+      "SPOTLIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x.",
+      "AREALIGHT: since 5.x lights are LIGHT + \"lightType\" parameter; these constants threw \"Can't find variable\" (#5550). Verify in 8.x."
      ]
     }
    }
@@ -12152,8 +12158,8 @@
     ],
     "lint": {
      "errors": [
-      "setParameter in performExpression() without third arg false: infinite rebuild loop (#574, #8739).",
-      "setParameter in performExpression() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in performExpression without third arg false: infinite rebuild loop (#574, #8739).",
+      "setParameter in performExpression without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -14027,7 +14033,7 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -17447,7 +17453,7 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -25046,7 +25052,7 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in performExpression() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in performExpression without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -25071,7 +25077,7 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in performExpression() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in performExpression without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }
@@ -25183,7 +25189,9 @@
     "unknown_calls": [],
     "lint": {
      "errors": [],
-     "warnings": []
+     "warnings": [
+      "Math.random() in buildObject(): geometry changes on every rebuild. Use a PRNG seeded from a parameter (patterns.md B10)."
+     ]
     }
    },
    {
@@ -25925,11 +25933,11 @@
     "unknown_calls": [],
     "lint": {
      "errors": [
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739).",
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739).",
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739).",
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739).",
-      "setParameter in buildObject() without third arg false: infinite rebuild loop (#574, #8739)."
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739).",
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739).",
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739).",
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739).",
+      "setParameter in buildObject without third arg false: infinite rebuild loop (#574, #8739)."
      ],
      "warnings": []
     }

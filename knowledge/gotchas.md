@@ -195,6 +195,8 @@ The things the official docs leave out, get wrong, or no longer describe correct
   [#6905](https://www.cheetah3d.com/forum/index.php?threads/6905/) [#8469](https://www.cheetah3d.com/forum/index.php?threads/8469/) [#10106](https://www.cheetah3d.com/forum/index.php?threads/10106/) [#10374](https://www.cheetah3d.com/forum/index.php?threads/10374/) [ex: Particle Menger.js](../examples/official/Particle/Particle%20Menger.js) [docs: Particle](../reference/api/Particle.md)
 - **Particle output does not export to OBJ** through `saveToFile`, and does not render when nested in itself. Convert it with Tools › Particle › Particle->Polygon first. Double-clicking a particle object's icon converts it to a raw particle object irreversibly. [#2110](https://www.cheetah3d.com/forum/index.php?threads/2110/) [#6905](https://www.cheetah3d.com/forum/index.php?threads/6905/) [#7169](https://www.cheetah3d.com/forum/index.php?threads/7169/)
 
+- **Polygon winding and facing (unconfirmed).** The KB has no documented statement of which corner order faces outward. Don't guess: build the mesh, then for a closed convex shape compute each face normal `(b-a)×(c-a)` and its centroid. If the normal points toward the object's centre, call `core.flipWinding(p)`. This is the technique of the forum's Surface Utilities script. Cheetah3D stores no per-polygon normal and only derives it from winding plus the smoothing settings. [#7077](https://www.cheetah3d.com/forum/index.php?threads/7077/) [#7079](https://www.cheetah3d.com/forum/index.php?threads/7079/) [verify]
+
 ## 5. Objects, tags, materials
 
 - **Lights are all type `LIGHT` (5.x+). DOCS-CONFLICT.**
@@ -273,6 +275,14 @@ The things the official docs leave out, get wrong, or no longer describe correct
 - **Constraint tags:** use bare constants, not strings, with `addTagOfType(ORIENTCONSTRAINTTAG)` and `POINTCONSTRAINTTAG`, then `tag.setParameter("target", obj)`. Call `recordParametersForUndo()` first and `update()` after. [#14324](https://www.cheetah3d.com/forum/index.php?threads/14324/) [#14327](https://www.cheetah3d.com/forum/index.php?threads/14327/)
 - **Lights inside particle-instanced objects are not instanced.** Use emissive geometry instead. [#10374](https://www.cheetah3d.com/forum/index.php?threads/10374/)
 - **Skin weights, cluster data and morph data were not readable in 2012–13.** 8.1.1 now documents `Tag.addCluster/clusterAtIndex` and `Cluster.controlPointIndexArray/WeightArray`. The forum workaround was to save a non-binary `.jas` and parse it externally. [#9060](https://www.cheetah3d.com/forum/index.php?threads/9060/) [#9499](https://www.cheetah3d.com/forum/index.php?threads/9499/) [#6367](https://www.cheetah3d.com/forum/index.php?threads/6367/) [docs: Cluster](../reference/api/Cluster.md) [verify]
+
+- **Rotation component mapping.** `rotation` is a Vec3D of **heading, pitch, bank** in degrees, and `new Vec3D(h, p, b)` takes them in that order (`.x/.h`, `.y/.p`, `.z/.b`). Heading turns the object around **Y**: the official RotateObject.js increments `.h` to "rotate around the Y axis". By the usual HPB convention pitch is around X and bank around Z [verify]. [ex: RotateObject.js](../examples/official/Macro/RotateObject.js)
+- **Additive expression tags: don't read back what you write.** If `performExpression` reads `owner.getParameter("rotation")` and writes back `rotation + offset`, the offset builds up on every evaluation. Take the base from somewhere the expression doesn't write:
+  - `owner.getParameter("rotation", t)` when the parameter is keyframed. The documented time overload should evaluate the F-curve [verify].
+  - Otherwise a base value stored in a parameter on the tag. See patterns A3b and [ex: Wobble.js](../examples/generated/Wobble.js).
+- **What a tag script can do is under-documented.** Buttons in a tag's UI, writing the tag's own parameters from `performExpression` (pass `false`), and `recordParametersForUndo` from a tag are all unconfirmed [verify].
+- **Undo for edits to several objects (unconfirmed).** Calling `recordParametersForUndo()` on each object before `setParameter` in a single Tool button press makes each edit undoable. Whether they merge into one Undo step is unknown [verify]. [#10282](https://www.cheetah3d.com/forum/index.php?threads/10282/)
+- **Where scripts appear.** The Script menu mirrors the `Scripts/` folders: Tools › Script › Macro/Tool/… For Tool scripts the UI appears in the **Tool** tab. Script objects (Polygonobj/Splineobj/Particle) are created from the same menu and have their parameters in the object's properties. Script tags are added from the same menu, or the tag menu, with the target object selected [verify exact menu for tags].
 
 ## 6. Animation
 
@@ -445,3 +455,12 @@ These are the highest-impact claims. Each should become a small test macro.
 14. **Undo:** does `recordGeometryForUndo()` work from a Macro (docs say Tool only), and does Undo then restore the mesh without crashing?
 15. **`normalType`/`normalAngle` on polygon scripts:** are they host parameters, or only present when the script declares them (as GrapherUV does)?
 16. **Native method gaps:** do `node.id()`, `File.readInt()`, `Particle.setDeath()`, `doc.selectedObjects(true)`, `Vec4D.isEqual()` and `Material.rib()` exist?
+17. **Winding:** with `addPolygon`/`addIndexPolygon`, which corner order faces outward? (Build one quad and check its normal display.)
+18. **Rotation axes:** confirm pitch is around X and bank around Z.
+19. **Expression tags:**
+    - Does `getParameter("rotation", t)` return the F-curve value rather than the value the expression last wrote?
+    - Can a tag have working buttons?
+    - Is a tag's own `setParameter(..., false)` safe inside `performExpression`?
+20. **Undo:** does `recordParametersForUndo()` on N objects in one Tool action make one Undo step or N?
+21. **New scripts:** does "Update Scripts Menu" exist in 8.x, or is a relaunch needed? The book says relaunch.
+
