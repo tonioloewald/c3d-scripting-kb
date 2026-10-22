@@ -4,7 +4,7 @@ Minimal, canonical skeletons for each script type and common task. Read `knowled
 
 **How to read the source tags**
 
-- Each pattern names its sources: official 8.1.1 examples ([ex: Parameter Info.js](../examples/official/Macro/Parameter%20Info.js) style links), forum threads ([#1946](https://www.cheetah3d.com/forum/index.php?threads/1946/) style links), and the user's book (`reference/book-ch17.8-scripts.md`).
+- Each pattern names its sources: official 8.1.1 examples ([ex: Parameter Info.js](../examples/official/Macro/Parameter%20Info.js) style links), forum threads ([#1946](https://www.cheetah3d.com/forum/index.php?threads/1946/) style links), and *Learn 3D with Cheetah 3D* (Tonio Loewald) (`reference/book-ch17.8-scripts.md`).
 - **API status:**
   - Plain calls are documented in `reference/api/`.
   - Calls marked `// FORUM` or `// EXAMPLE` work in practice but are **not** in the 8.1.1 reference.

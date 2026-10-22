@@ -29,7 +29,7 @@ The things the official docs leave out, get wrong, or no longer describe correct
 - **New script files need a menu refresh.** Use the "Update Scripts Menu" / "Update menu" item at the bottom of the Script menu (5.x+), or relaunch. Edits to a script that is already listed are picked up without a restart; you may need to re-pick it from the menu. The docs only say "restart Cheetah3D" (DOCS-GAP). [#812](https://www.cheetah3d.com/forum/index.php?threads/812/) [#1145](https://www.cheetah3d.com/forum/index.php?threads/1145/) [#1294](https://www.cheetah3d.com/forum/index.php?threads/1294/) [#6373](https://www.cheetah3d.com/forum/index.php?threads/6373/) [docs: ExecuteScript](../reference/ExecuteScript.md)
 - **Subfolders inside a type folder are fine. A new top-level folder under `Scripts/` is not shown in the menus.** You can use that to hold shared library code: see `Scripts/Library` in §7. [#9025](https://www.cheetah3d.com/forum/index.php?threads/9025/) [#12183](https://www.cheetah3d.com/forum/index.php?threads/12183/)
 - **Scenes reference script objects and tags by script file name.** If you rename the `.js` file (even spaces to underscores), saved `.jas` files no longer find it and the stored parameter values are lost. Keep filenames stable across versions. [#6905](https://www.cheetah3d.com/forum/index.php?threads/6905/)
-- **Telling the type from the source** (heuristic from the user's book):
+- **Telling the type from the source** (heuristic from *Learn 3D with Cheetah 3D* (Tonio Loewald)):
   - `main(doc)` means Macro.
   - `buildObject` plus `addParticle` means Particle.
   - `buildObject` plus `move/line/curve` means Splineobj.

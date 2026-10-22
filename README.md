@@ -1,5 +1,7 @@
 # Cheetah3D Scripting Knowledge Base
 
+**Want an AI to write a Cheetah3D script?** Give it [`dist/c3d-context-short.md`](dist/c3d-context-short.md) first: paste it in, or attach [`dist/c3d-context-full.md`](dist/c3d-context-full.md). Then ask. Always test the result.
+
 Cheetah3D's JavaScript scripting API is powerful, but the official documentation is thin and much of what people know is scattered across 20 years of forum posts. This repo collects that knowledge in a form people and AI agents can use. It was built to back an AI skill that writes working Cheetah3D scripts (`skill/SKILL.md`).
 
 ## What's here
@@ -19,6 +21,9 @@ Cheetah3D's JavaScript scripting API is powerful, but the official documentation
 | `forum/threads/` | Full transcripts of 539 threads from the *Script downloads* and *Scripting General* subforums |
 | `tools/c3d_lint.py` | A static checker for the mistakes that most often broke scripts |
 | `skill/SKILL.md` | An agent skill for writing Cheetah3D scripts using this repo |
+| `dist/c3d-context-short.md` | **About 5k tokens. Paste it into any AI chat before asking for a script** |
+| `dist/c3d-context-full.md` | About 34k tokens: everything, for a ChatGPT/Claude project or as an attachment (`tools/build_context.py` regenerates both) |
+| `llms.txt` | The entry point for AI tools that read this repo |
 
 ## How the status was decided
 

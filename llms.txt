@@ -1,0 +1,23 @@
+# Cheetah3D Scripting Knowledge Base
+
+> Community knowledge base for writing JavaScript scripts for Cheetah3D, the macOS 3D app: Macro, Tool, Tag, Polygonobj, Splineobj and Particle scripts. It brings together the official 8.1.1 API reference, the example scripts bundled with the app, an archive of the Cheetah3D forum's scripting threads (2006–2025), and a cited list of undocumented gotchas.
+
+To write a script, start with the context packs:
+
+- [Short context pack](dist/c3d-context-short.md): about 5k tokens. Script types, hard rules, an API summary and skeletons.
+- [Full context pack](dist/c3d-context-full.md): about 34k tokens. Everything in the short pack, plus all patterns, all gotchas and the full API reference.
+
+## Core
+
+- [Patterns](knowledge/patterns.md): working skeletons for each script type and for common tasks.
+- [Gotchas](knowledge/gotchas.md): what the docs leave out or get wrong, with forum citations and version notes.
+- [API reference](reference/api/): official Cheetah3D 8.1.1 scripting classes. [Machine-readable index](reference/api-index.json).
+- [Official examples](examples/official/): the scripts that ship with 8.1.1.
+
+## Optional
+
+- [Script catalog](catalog/CATALOG.md): community scripts with reported works/broken status and evidence.
+- [Archived forum scripts](scripts/forum/): CC BY, each with an attribution header.
+- [Forum thread transcripts](forum/threads/)
+- [Linter](tools/c3d_lint.py): static checks for common mistakes.
+- [Claude skill](skill/SKILL.md)
