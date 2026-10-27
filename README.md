@@ -8,16 +8,29 @@ You don't need to install anything, and you don't need to understand the code th
 
 ---
 
-## Quick start (5 minutes)
+## Quick start: just give the AI this link
 
-1. **Download the context pack.** Open [`dist/c3d-context-short.md`](dist/c3d-context-short.md) and click the **Download raw file** button (the ⬇ icon at the top right of the file view).
-2. **Start a new chat** in ChatGPT, Claude or a similar assistant.
-3. **Attach the file** (paperclip or "+" button), or open it in any text editor and paste its whole contents into the chat.
-4. **Ask for what you want** in the same message. For example:
+Start a new chat in ChatGPT, Claude, Gemini or a similar assistant, and begin your message with:
 
-   > Using the attached Cheetah3D guide, write a Macro script that renames every selected object to "Brick 1", "Brick 2", "Brick 3" and so on, in the order they appear in the object list. I'm using Cheetah3D 8.1.
+```
+Read https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/dist/c3d-context-short.md and follow it.
+```
 
-5. **Install and test** the script the AI gives you (see [Installing a script](#installing-a-script) below).
+Then say what you want in the same message. For example:
+
+> Read https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/dist/c3d-context-short.md and follow it. Then write me a Cheetah3D Macro script that renames every selected object to "Brick 1", "Brick 2", "Brick 3" and so on, in the order they appear in the object list. I'm using Cheetah3D 8.1.
+
+That's it: no download and no setup. Then [install and test](#installing-a-script) the script the AI gives you.
+
+The guide also lists links to everything else in this repo, so an assistant that can browse can look up more detail, or check whether someone has already written your script.
+
+### If the AI can't open the link
+
+Some assistants, or some free tiers, can't open web links. A good sign is that the AI answers without mentioning folders or script types, or says it can't browse. In that case, give it the file yourself:
+
+1. Open [`dist/c3d-context-short.md`](dist/c3d-context-short.md) and click **Download raw file** (the ⬇ icon at the top right of the file view).
+2. Attach the file to your chat (paperclip or "+" button), or open it in a text editor and paste all of it in.
+3. Ask for what you want in the same message.
 
 **Short or full pack?**
 
@@ -82,7 +95,7 @@ Many older scripts from the forum stopped working in newer Cheetah3D versions. U
 
 1. **Find the script.** Check the [script catalog](catalog/CATALOG.md) first. It lists every script posted in the forum's Scripting section, says whether people reported it **working**, **broken** or **fixed later**, and shows which file is the best version. The files are in [`scripts/forum/`](scripts/forum/).
 2. **Run it once and copy the error** from the Console, if there is one.
-3. **Start a chat**, attach the context pack, then attach or paste the script and write something like:
+3. **Start a chat**, give it the [guide link](#quick-start-just-give-the-ai-this-link), then attach or paste the script and write something like:
 
    > This is a Cheetah3D **Polygonobj** script from the forum (around 2010). In Cheetah3D 8.1 it **[describe what happens: nothing appears / it crashes / the shape is inside out]**. The Console shows:
    >
@@ -98,7 +111,7 @@ Many older scripts from the forum stopped working in newer Cheetah3D versions. U
 
 ## Recipe 2: Add a feature to a script
 
-1. Attach the context pack and the script (one you wrote, one from the forum, or one an AI wrote earlier).
+1. Start a chat with the [guide link](#quick-start-just-give-the-ai-this-link), then attach or paste the script (one you wrote, one from the forum, or one an AI wrote earlier).
 2. Describe the change in Cheetah3D terms, as you would to a colleague:
 
    > Here is a Cheetah3D **Polygonobj** script that makes a brick wall. Please add:
@@ -114,7 +127,7 @@ Many older scripts from the forum stopped working in newer Cheetah3D versions. U
 
 ## Recipe 3: Create a new script
 
-Your description matters more than anything else. A good request says:
+Start your message with the [guide link](#quick-start-just-give-the-ai-this-link), then describe the script. Your description matters more than anything else. A good request says:
 
 - **What it acts on:** the selected objects, the whole scene, or a new object the script generates.
 - **What it should do,** step by step, in Cheetah3D terms (objects, tags, materials, keyframes, splines, polygons, UVs).
@@ -138,7 +151,7 @@ The AI tells you the script type, the folder and how to run it. If anything in t
 
 ## When it doesn't work
 
-Paste the Console output back into the same chat and describe what you see. The context pack tells the AI the order in which to check the usual causes:
+Paste the Console output back into the same chat and describe what you see. The guide tells the AI the order in which to check the usual causes:
 
 1. **Wrong folder.** A misplaced script fails silently or with a misleading error.
 2. **A missing setting in the script's UI code.** This can crash Cheetah3D.

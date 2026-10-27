@@ -7,6 +7,7 @@ dist/c3d-context-full.md  : about 40k tokens. Upload it to a ChatGPT/Claude proj
 import re, pathlib, datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = 'https://github.com/tonioloewald/c3d-scripting-kb'
+RAW = 'https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main'
 skill = (ROOT / 'skill/SKILL.md').read_text()
 patterns = (ROOT / 'knowledge/patterns.md').read_text()
 gotchas = (ROOT / 'knowledge/gotchas.md').read_text()
@@ -42,6 +43,14 @@ HEAD = f"""# Cheetah3D Scripting: AI context pack ({{kind}})
 uncertain with `// UNVERIFIED:` and tell the user what to check. Write ES5 JavaScript (`var`, `function`; no arrow functions, `let`/`const`,
 classes, template literals or modules). Always say which script type the code is, which folder to install it in
 (`~/Library/Application Support/Cheetah3D/Scripts/<Type>/`) and how to run it. Tell the user the script hasn't been tested in Cheetah3D.
+Assume the user knows Cheetah3D but not programming: give the complete script in one block, say to save it as a plain-text `.js` file
+(in TextEdit, Format › Make Plain Text first, and turn off smart quotes), and tell them to paste back any Console errors if it fails.
+
+**If you can open URLs,** fetch more detail when the task needs it (these are plain text):
+- Everything (all patterns, all gotchas, the full API): {RAW}/dist/c3d-context-full.md
+- Gotchas only: {RAW}/knowledge/gotchas.md · Patterns only: {RAW}/knowledge/patterns.md
+- One API class: {RAW}/reference/api/<Class>.md (for example `PolyCore.md`, `Document.md`)
+- Existing community scripts and whether they work: {RAW}/catalog/CATALOG.md (files are under {RAW}/scripts/forum/)
 """
 
 core = re.sub(r'^## \d+\. ', '## ', '\n\n'.join([
@@ -52,7 +61,7 @@ core = re.sub(r'^## \d+\. ', '## ', '\n\n'.join([
 skeletons = compact_cites(section(patterns, '## A. Script-type skeletons', '## B. Common tasks').split('\n', 1)[1].strip())
 intro = section(patterns, '# Cheetah3D Script Patterns', '## A. Script-type skeletons').split('\n', 1)[1].strip()
 
-short = HEAD.format(kind='short') + '\n' + core + '\n\n## Skeletons\n\n' + compact_cites(intro) + '\n\n' + skeletons + f'\n\n---\nMore patterns, every gotcha with its evidence, and the full API reference are in `c3d-context-full.md` at {REPO}.\n'
+short = HEAD.format(kind='short') + '\n' + core + '\n\n## Skeletons\n\n' + compact_cites(intro) + '\n\n' + skeletons + f'\n\n---\n**This is the short pack.** More patterns (scene iteration, meshes with UVs, splines, materials, keyframes, files, shared libraries, rendering, PRNG, introspection), every gotcha with its evidence, and the full API reference are in the full pack: {RAW}/dist/c3d-context-full.md. Fetch it, or ask the user to attach it, before using any API, pattern or gotcha that this file only mentions (for example patterns B8 or B10), and whenever a script fails for a reason not covered here.\n'
 
 api_pages = []
 order = ['Functions', 'Base', 'Document', 'Object', 'Tag', 'PolyCore', 'SplineCore', 'ParticleCore', 'Particle', 'Material', 'Node',

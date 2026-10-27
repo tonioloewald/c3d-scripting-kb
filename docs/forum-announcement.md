@@ -27,12 +27,13 @@ I've put together a knowledge base on GitHub: **https://github.com/tonioloewald/
 
 **Using it with an AI (ChatGPT, Claude, etc.)**
 
-Most of the reason I built this is that AI assistants write *plausible-looking but wrong* Cheetah3D scripts, because there's so little accurate information about the API out there. The repo includes two "context packs" to fix that:
+Most of the reason I built this is that AI assistants write *plausible-looking but wrong* Cheetah3D scripts, because there's so little accurate information about the API out there. The repo includes a guide written for the AI to fix that. You don't need to download anything: start a chat and begin your message with
 
-- `dist/c3d-context-short.md` (small): paste it into the chat before you ask for a script.
-- `dist/c3d-context-full.md` (complete): attach it, or add it to a ChatGPT/Claude project.
+> Read https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/dist/c3d-context-short.md and follow it.
 
-With either one loaded, the AI knows the real API, the folder rules and the common traps. **Always test what it gives you**: it hasn't seen your Cheetah3D.
+and then say what script you want, or paste in a broken one and the error from the Console. If your AI can't open links, download that file and attach it instead. There's also a complete version (`dist/c3d-context-full.md`) you can add to a ChatGPT or Claude project.
+
+With the guide loaded, the AI knows the real API, the folder rules and the common traps. **Always test what it gives you**: it hasn't seen your Cheetah3D.
 
 **How you can help**
 

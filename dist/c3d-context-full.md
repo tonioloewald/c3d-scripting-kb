@@ -1,7 +1,7 @@
 # Cheetah3D Scripting: AI context pack (full)
 
 > Give this file to an AI assistant (ChatGPT, Claude, Gemini, …) **before** asking it to write or fix a Cheetah3D script.
-> It is a condensed version of the community knowledge base at https://github.com/tonioloewald/c3d-scripting-kb, built 2026-10-22. It was assembled from the official
+> It is a condensed version of the community knowledge base at https://github.com/tonioloewald/c3d-scripting-kb, built 2026-10-27. It was assembled from the official
 > Cheetah3D 8.1.1 scripting reference, the scripts bundled with the app, and about 20 years of threads on the Cheetah3D forum.
 > Citations like #574 are forum threads: https://www.cheetah3d.com/forum/index.php?threads/574/
 
@@ -9,6 +9,14 @@
 uncertain with `// UNVERIFIED:` and tell the user what to check. Write ES5 JavaScript (`var`, `function`; no arrow functions, `let`/`const`,
 classes, template literals or modules). Always say which script type the code is, which folder to install it in
 (`~/Library/Application Support/Cheetah3D/Scripts/<Type>/`) and how to run it. Tell the user the script hasn't been tested in Cheetah3D.
+Assume the user knows Cheetah3D but not programming: give the complete script in one block, say to save it as a plain-text `.js` file
+(in TextEdit, Format › Make Plain Text first, and turn off smart quotes), and tell them to paste back any Console errors if it fails.
+
+**If you can open URLs,** fetch more detail when the task needs it (these are plain text):
+- Everything (all patterns, all gotchas, the full API): https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/dist/c3d-context-full.md
+- Gotchas only: https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/knowledge/gotchas.md · Patterns only: https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/knowledge/patterns.md
+- One API class: https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/reference/api/<Class>.md (for example `PolyCore.md`, `Document.md`)
+- Existing community scripts and whether they work: https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/catalog/CATALOG.md (files are under https://raw.githubusercontent.com/tonioloewald/c3d-scripting-kb/main/scripts/forum/)
 
 ## Pick the script type first
 
